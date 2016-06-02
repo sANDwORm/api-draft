@@ -34,27 +34,27 @@ various purposes with scpecial attention to import to other systems
             
     + Schema
     
-            {
-              "$schema": "http://json-schema.org/draft-04/schema#",
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "project_id": {
-                    "type": "string",
-                    "maxLength": 40
-                  },
-                  "name": {
-                    "type": "string",
-                    "maxLength": 200
-                  }
-                },
-                "required": [
-                  "project_id",
-                  "name"
-                ]
-              }
-            }
+            {  
+                "$schema":"http://json-schema.org/draft-04/schema#",
+                "type":"array",
+                "items":{  
+                    "type":"object",
+                    "properties":{  
+                        "project_id":{  
+                            "type":"string",
+                            "maxLength":40
+                        },
+                        "name":{  
+                            "type":"string",
+                            "maxLength":200
+                        }
+                    },
+                    "required":[  
+                        "project_id",
+                        "name"
+                    ]
+                }
+            }            
             
 ### Get Projects [GET /projects/{project_id}]
 
@@ -64,24 +64,18 @@ various purposes with scpecial attention to import to other systems
 
 + Response 200 (application/json)
     + Attributes (Project)
-
-    + Schema
     
-            {
-                "$schema": "http://json-schema.org/draft-04/schema#",
-                "type": "object",
-                "properties": {
-                  "project_id": {
-                    "type": "string",
-                    "maxLength": 40
-                  },
-                  "name": {
-                    "type": "string",
-                    "maxLength": 200
-                  }
-                },
-                "required": [
-                  "project_id",
-                  "name"
-                ]
-            }
+## Content Types [/projects/{project_id}/types]
+
++ Parameters
+
+    + project_id: `61e58692-47c2-4e3c` (string, required)
+    
++ Attributes
+    + type_id: `47c2-4e3c-12598` (string, required)
+    + name: `Blog` (string, required)
+    
+
+### Get all Content Types [GET]
++ Response 200 (application/json)
+    + Attributes (array[Content Types])

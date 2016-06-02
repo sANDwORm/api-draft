@@ -1,0 +1,53 @@
+FORMAT: 1A
+HOST: http://api-draft.kenticocloud.com/
+
+# Kentico Draft API
+
+![Kentico Draft](https://kenticocloud.com/logotypes/kentico_draft_rgb_small.png)
+
+This API allows consumers to fetch content created in Kentico Draft for 
+various purposes with scpecial attention to import to other systems
+(CMS, ECommerce, CDN, ...) needs.
+
+## Authorization
+
+### API Key
+
+### Auth0 account
+
+# Group Projects
+
+## Project [/projects/{id}]
+A project encapsulates all related project data.
+
++ Parameters
+    + id (string)
+
+        The ID of the desired project.
+        
++ Attributes
+    + id: `010a16c5-c454-48d3` (string)
+    + name: My Web Project (string)
+
+### Retrieve a project [GET]
++ Response 200 (application/json)
+    + Attributes (Project)
+
+## Projects [/projects]
+Returns a list of your projects
++ Attributes (array[Project])
+
+### List All Projects [GET]
++ Response 200 (application/json)
+        [
+          {
+            "id": "010a16c5-c454-48d3",
+            "name": "My Web Project"
+          },
+          {
+            "id": "010a16c5-c454-48d3",
+            "name": "My Other Web Project"
+          }
+        ]
+            
+    + Attributes (Projects)

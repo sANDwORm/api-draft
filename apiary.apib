@@ -15,30 +15,73 @@ various purposes with scpecial attention to import to other systems
 
 ### Auth0 account
 
-# Group Projects
+## Project [/projects]
 
-## Project [/projects/{id}]
-A project encapsulates all related project data.
++ Attributes
+    + project_id: `61e58692-47c2-4e3c` (string, required)
+    + name: `The Web Project` (string, required)
+
+### Get All Projects [GET]
++ Response 200 (application/json)
+    + Attributes (array[Project])
+
+    + Body
+    
+            [
+                {"project_id": "61e58692-47c2-4e3c", "name": "The Web Project"}, 
+                {"project_id": "3d05c3b1-c51e-4973", "name": "A Better Web"}
+            ]
+            
+    + Schema
+    
+            {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "project_id",
+                  "name"
+                ]
+              }
+            }
+            
+### Get Projects [GET /projects/{project_id}]
 
 + Parameters
-    + id (string)
 
-        The ID of the desired project.
-        
-+ Attributes
-    + id: `010a16c5-c454-48d3` (string)
-    + name: My Web Project (string)
+    + project_id: `61e58692-47c2-4e3c` (string, required)
 
-### Retrieve a project [GET]
 + Response 200 (application/json)
     + Attributes (Project)
 
-## Projects [/projects]
-Returns a list of your projects
-
-### List All Projects [GET]
-+ Response 200 (application/json)
-    + Attributes (array[Project])
-        + Sample
-            - (Project)
-            - (Project)
+    + Schema
+    
+            {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "type": "object",
+                "properties": {
+                  "project_id": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "project_id",
+                  "name"
+                ]
+            }

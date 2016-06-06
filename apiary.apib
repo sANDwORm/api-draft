@@ -74,8 +74,46 @@ various purposes with scpecial attention to import to other systems
 + Attributes
     + type_id: `47c2-4e3c-12598` (string, required)
     + name: `Blog` (string, required)
-    
+    + elements: 12, 13 (array, required)
 
 ### Get all Content Types [GET]
 + Response 200 (application/json)
-    + Attributes (array[Content Types])
+    + Attributes (array[Content Type])
+
+# Data Structures
+
+## Content Type (object)
++ elements (array)
+    - (StringTypeElement)
+    - (RichTextTypeElement)
+    - (NumberTypeElement)
+
+## TypeElementBase (object)
++ `type_element_id`: `89e4-5ed2e8c1c8e5` (string, required)
++ name (string, required)
++ type (enum, required)
+    - string
+    - number
+    - rich_text
+    - asset
+    - modular_content
+    - guidelines
+    - date_time
++ guidelines (string)
+
+## StringTypeElement (TypeElementBase)
++ name: Caption
++ type: string
++ default_value: `Arabica with hint of cinamon` (string) - Default value of element. Limit 100 000 characters.
++ guidelines: `Caption of article - max 70 characters` (string)
+
+## RichTextTypeElement (StringTypeElement)
++ name: Description
++ type: rich_text
++ default_value: `Arabica with hint of <b>cinamon</b>` (string) - HTML string
++ guidelines: `Article - max 1000 characters` (string)
+
+## NumberTypeElement (TypeElementBase)
++ name: Price in USD
++ type: number
++ default_value: 123 (number)

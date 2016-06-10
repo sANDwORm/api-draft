@@ -15,13 +15,20 @@ various purposes with scpecial attention to import to other systems
 
 ### Auth0 account
 
-## Project [/projects]
+### Acces Token
+
+## Projects [/projects]
 
 + Attributes
-    + project_id: `61e58692-47c2-4e3c` (string, required)
+    + project_id: `61e5869247c24e3c` (string, required)
     + name: `The Web Project` (string, required)
 
 ### Get All Projects [GET]
++ Request
+    + Headers
+
+            Authorization: Bearer {access_token}
+
 + Response 200 (application/json)
     + Attributes (array[Project])
 
@@ -31,89 +38,281 @@ various purposes with scpecial attention to import to other systems
                 {"project_id": "61e58692-47c2-4e3c", "name": "The Web Project"}, 
                 {"project_id": "3d05c3b1-c51e-4973", "name": "A Better Web"}
             ]
-            
-    + Schema
-    
-            {  
-                "$schema":"http://json-schema.org/draft-04/schema#",
-                "type":"array",
-                "items":{  
-                    "type":"object",
-                    "properties":{  
-                        "project_id":{  
-                            "type":"string",
-                            "maxLength":40
-                        },
-                        "name":{  
-                            "type":"string",
-                            "maxLength":200
-                        }
-                    },
-                    "required":[  
-                        "project_id",
-                        "name"
-                    ]
-                }
-            }            
-            
-### Get Projects [GET /projects/{project_id}]
 
-+ Parameters
-
-    + project_id: `61e58692-47c2-4e3c` (string, required)
-
-+ Response 200 (application/json)
-    + Attributes (Project)
-    
 ## Content Types [/projects/{project_id}/types]
 
 + Parameters
 
-    + project_id: `61e58692-47c2-4e3c` (string, required)
+    + project_id: `61e5869247c24e3c` (string, required)
     
-+ Attributes
-    + type_id: `47c2-4e3c-12598` (string, required)
-    + name: `Blog` (string, required)
-    + elements: 12, 13 (array, required)
-
 ### Get all Content Types [GET]
++ Request
+    + Headers
+
+            Authorization: Bearer {access_token}
+
 + Response 200 (application/json)
     + Attributes (array[Content Type])
+    
+## Content Items [/projects/{project_id}/items]
+
++ Parameters
+
+    + project_id: `61e5869247c24e3c` (string, required)
+
+### Get Content Items [GET]
++ Request
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Response 200 (application/json)
+    + Attributes (array[Content Item])
+    
+## Workflow [/projects/{project_id}/workflow]
+
++ Parameters
+
+    + project_id: `61e5869247c24e3c` (string, required)
+
+### Get Workflow [GET]
++ Request
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Response 200 (application/json)
+    + Attributes (array[Workflow Status])
+    
+## Sitemap [/projects/{project_id}/sitemap]
+
++ Parameters
+
+    + project_id: `61e5869247c24e3c` (string, required)
+
+### Get Sitemap [GET]
++ Request
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Response 200 (application/json)
+    + Attributes (Sitemap)
+    
+    + Body
+    
+            {
+              "nodes": [
+                {
+                  "sitemap_node_id": "59658d3e437b8eed",
+                  "name": "Home",
+                },
+                {
+                  "sitemap_node_id": "ad66575ac0f9c35e",
+                  "name": "Events",
+                  "children": [
+                    {
+                      "sitemap_node_id": "0221017fe29c1bdb",
+                      "name": "USA",
+                    },
+                    {
+                      "sitemap_node_id": "b23cff116eba3c1b",
+                      "name": "Europe",
+                    }
+                  ]
+                },
+                {
+                  "sitemap_node_id": "2707dd12ab3ffd87",
+                  "name": "Blog",
+                }
+              ]
+            }
+            
+## Assets [/projects/{project_id}/asset/{asset_id}]
+
++ Parameters
+
+    + project_id: 61e5869247c24e3c (string, required)
+    + asset_id: 924ea5f1e4c68ed8 (string, required) 
+
+### Get Asset Download Link [GET]
+Download link expires after 60 minutes.
+
++ Request
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Response 200 (application/json)
+    + Attributes
+        + link: `https://kenticodraft.net/970c4e479a69e9fa/adc496cbfa09f729/blogpost_teaser.jpg?sv=2015-02-21&sig=FVArbWI7zCodmEMJ69DE4JCiyfhqj` (string, required) - link from which download file by simple HTTPS GET
+        + exp: `2016-06-11T12:55:28.29493Z` (string, required) - ISO 8601 date time of download link expiration
+
+##########################################################
 
 # Data Structures
 
 ## Content Type (object)
++ `type_id`: 8e879b999dd26639 (string, required)
++ name: Blog (string, required) - Max 50 characters
 + elements (array)
     - (StringTypeElement)
     - (RichTextTypeElement)
     - (NumberTypeElement)
+    - (DateTimeTypeElement)
+    - (AssetTypeElement)
+    - (ModularContentTypeElement)
 
 ## TypeElementBase (object)
-+ `type_element_id`: `89e4-5ed2e8c1c8e5` (string, required)
++ `type_element_id` (string, required)
 + name (string, required)
 + type (enum, required)
     - string
     - number
     - rich_text
-    - asset
+    - assets
     - modular_content
-    - guidelines
     - date_time
 + guidelines (string)
 
-## StringTypeElement (TypeElementBase)
-+ name: Caption
-+ type: string
-+ default_value: `Arabica with hint of cinamon` (string) - Default value of element. Limit 100 000 characters.
-+ guidelines: `Caption of article - max 70 characters` (string)
+## AssetTypeElement (TypeElementBase)
++ `type_element_id`: 9abb70a524a65e00
++ name: Teaser image
++ type: assets
++ guidelines: `Attach teaser image, max. dimensions are 1024 × 400 px, allowed formats are *.jpg, *.png, *.gif.`
 
-## RichTextTypeElement (StringTypeElement)
-+ name: Description
-+ type: rich_text
-+ default_value: `Arabica with hint of <b>cinamon</b>` (string) - HTML string
-+ guidelines: `Article - max 1000 characters` (string)
+## DateTimeTypeElement (TypeElementBase)
++ `type_element_id`: bef3ad230736ead1
++ name: Publication date
++ type: date_time
++ guidelines: `Provide the date that should appear on a live site as the date this article was posted live. Furthermore, this date will influence the order of the articles in the list of articles.`
 
 ## NumberTypeElement (TypeElementBase)
++ `type_element_id`: bcc618ae3faf21eb
 + name: Price in USD
 + type: number
-+ default_value: 123 (number)
++ guidelines: `Article price. 0 means this artcile is free.`
+
+## StringTypeElement (TypeElementBase)
++ `type_element_id`: a0b10a4d16fa9186
++ name: Title
++ type: string
++ guidelines: `Provide a title that will fit within 60 characters.`
+
+## RichTextTypeElement (StringTypeElement)
++ `type_element_id`: bfc7bf641ad5350c
++ name: Body
++ type: rich_text
++ guidelines: `Keep the blog post structured with concise paragraphs complemented with headlines that will help the reader navigate through the article's content.`
+
+## ModularContentTypeElement (TypeElementBase)
++ `type_element_id`: bc6ff87ec6aa95f0
++ name: Features
++ type: modular_content
++ guidelines: `Assign at most 3 Features that have been prepared for a home page.`
+
+############################################
+
+## Content Item (object)
++ `item_id`: 8d2c787c7b08ad9c (string, required)
++ name: Blog post (string, required) - Max 50 characters
++ sitemam_location (array[string])
+    - 821fe4ebbbbf7cd2
+    - a8fec4b5039816d9
++ last_modified: 2016-06-09T14:41:10.6814919Z (string, required)
++ workflow_status (Workflow Status, required)
++ elements (array)
+    - (StringItemElement)
+    - (RichTextItemElement)
+    - (NumberItemElement)
+    - (DateTimeItemElement)
+    - (AssetItemElement)
+    - (ModularContentItemElement)
+
+## Workflow Status (object)
++ workflow_id: 9ad09d2e5f7532ae
++ name: Draft (string, required)
++ color: red (enum, required)
+    - red
+    - pink
+    - purple
+    - `deep-purple`
+    - indigo
+    - blue
+    - cyan
+    - teal
+    - green
+    - `light-green`
+    - lime
+    - yellow
+    - amber
+    - orange
+    - brown
+    - grey
+    - `light-grey`
+
+## ItemElementBase (object)
++ `item_id` (string, required)
++ name (string, required)
++ type (enum, required)
+    - string
+    - number
+    - rich_text
+    - assets
+    - modular_content
+    - date_time
+    
+## Asset (object)
++ asset_id: 924ea5f1e4c68ed8 (string, required)
++ name: blogpost_teaser.jpg (string, required) - file name
++ type: image/jpg (string, required) - file mime type
++ size: 135897 (number, required) - size of file (unsigned integer)
++ last_modified: 2016-03-31T08:04:14.7525987Z (string, required) - time of asset upload
+
+## AssetItemElement (ItemElementBase)
++ `item_id`: e9abb70a524a65e00
++ type: asset
++ name: Teaser image
++ value (array[Asset], required) - list of assets
+
+## DateTimeItemElement (ItemElementBase)
++ `item_id`: cbef3ad230736ead1
++ name: Publication date
++ type: date_time (string, optional) - ISO 8601 date time
++ value: 2016-03-19T00:00:00Z
+
+## NumberItemElement (ItemElementBase)
++ `item_id`: abcc618ae3faf21eb
++ name: Price in USD
++ value: 49.9 (number, optional)
+
+## StringItemElement (ItemElementBase)
++ `item_id`: ba0b10a4d16fa9186
++ name: Title
++ value: Sample blog post (string, optional)
+
+## RichTextItemElement (StringItemElement)
++ `item_id`: 8bfc7bf641ad5350c
++ name: Body
++ type: rich_text
++ value: `<p>There are many different types of blogs, differing not only in the type of content, but also in the way that content is delivered or written.&nbsp;</p>\n<h2>Personal blogs</h2>` (string, optional)
+
+## Content Item Reference (object)
++ `item_id`: 8d2c787c7b08ad9c (string, required)
++ name: Blog post (string, required)
+
+## ModularContentItemElement (ItemElementBase)
++ `item_id`: fbc6ff87ec6aa95f0
++ name: Features
++ type: modular_content
++ value (array[Content Item Reference], required)
+
+############################################
+
+## Sitemap Node (object)
++ `sitemap_node_id`: 897f-8e395386de7a (string, required)
++ name: Home (string, required)
++ children (array[Sitemap Node])
+
+## Sitemap (object)
++ nodes (array[Sitemap Node])

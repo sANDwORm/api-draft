@@ -1,13 +1,13 @@
 FORMAT: 1A
-HOST: http://api-draft.kenticocloud.com/
+HOST: https://api-draft.kenticocloud.com/
 
 # Kentico Draft API
 
 ![Kentico Draft](https://kenticocloud.com/logotypes/kentico_draft_rgb_small.png)
 
 This API allows consumers to fetch content created in Kentico Draft for 
-various purposes with scpecial attention to import to other systems
-(CMS, ECommerce, CDN, ...) needs.
+various purposes with scpecial attention to migrate content to other systems
+(CMS, ECommerce, CDN, ...).
 
 ## Authorization
 
@@ -67,7 +67,15 @@ various purposes with scpecial attention to import to other systems
             Authorization: Bearer {access_token}
 
 + Response 200 (application/json)
-    + Attributes (array[Content Item])
+    + Attributes 
+        + data (array[Content Item])
+        + pages - simple forward only paging
+            + items_count: 128
+            + pages_count: 13
+            + previous: 
+            + next: `https://api-draft.kenticocloud.com/projects/61e5869247c24e3c/items?page=2`
+            + first: `https://api-draft.kenticocloud.com/projects/61e5869247c24e3c/items`
+            + last: `https://api-draft.kenticocloud.com/projects/61e5869247c24e3c/items?page=13`
     
 ## Workflow [/projects/{project_id}/workflow]
 

@@ -5,11 +5,10 @@ HOST: https://api-draft.kenticocloud.com/
 
 ![Kentico Draft](https://kenticocloud.com/logotypes/kentico_draft_rgb_small.png)
 
-This API allows consumers to fetch content created in Kentico Draft for 
-various purposes with scpecial attention to migrate content to other systems
-(CMS, ECommerce, CDN, ...).
+Kentico Draft API helps you automate exporting content from Kentico Draft to the CMS of your choice. By accessing the whole content inventory, you can build your own integrations or one-off scripts to export content.
 
 ## Authorization
+TODO: How to get AuthToken
 
 ### API Key
 
@@ -18,10 +17,10 @@ various purposes with scpecial attention to migrate content to other systems
 ### Acces Token
 
 ## Projects [/projects]
-
+Both content inventory and content models are always a part of a project.
 + Attributes
-    + project_id: `61e5869247c24e3c` (string, required)
-    + name: `The Web Project` (string, required)
+    + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
+    + name: `Sample project` (string, required)
 
 ### Get All Projects [GET]
 + Request
@@ -35,8 +34,8 @@ various purposes with scpecial attention to migrate content to other systems
     + Body
     
             [
-                {"project_id": "61e58692-47c2-4e3c", "name": "The Web Project"}, 
-                {"project_id": "3d05c3b1-c51e-4973", "name": "A Better Web"}
+                {"project_id": "54da688e-5489-467d-bd25-28882f4f054d", "name": "Sample project"}, 
+                {"project_id": "aeea9a97-041a-4e64-be57-ede0f0be14d4", "name": "Project without delays"}
             ]
 
 ## Content Types [/projects/{project_id}/types]
@@ -72,7 +71,7 @@ various purposes with scpecial attention to migrate content to other systems
         + pages - simple forward only paging
             + items_count: 128
             + pages_count: 13
-            + previous: 
+            + previous: ` `
             + next: `https://api-draft.kenticocloud.com/projects/61e5869247c24e3c/items?page=2`
             + first: `https://api-draft.kenticocloud.com/projects/61e5869247c24e3c/items`
             + last: `https://api-draft.kenticocloud.com/projects/61e5869247c24e3c/items?page=13`

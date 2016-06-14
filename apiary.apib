@@ -74,10 +74,8 @@ Both content inventory and content models are always a part of a project.
         + pages - simple forward only paging
             + items_count: 128
             + pages_count: 13
-            + previous: ``
+            + current_page: 1
             + next: `https://api-draft.kenticocloud.com/projects/54da688e-5489-467d-bd25-28882f4f054d/items?page=2`
-            + first: `https://api-draft.kenticocloud.com/projects/54da688e-5489-467d-bd25-28882f4f054d/items`
-            + last: `https://api-draft.kenticocloud.com/projects/54da688e-5489-467d-bd25-28882f4f054d/items?page=13`
     
 ## Workflow [/projects/{project_id}/workflow]
 
@@ -109,34 +107,6 @@ Both content inventory and content models are always a part of a project.
 + Response 200 (application/json)
     + Attributes (Sitemap)
     
-    + Body
-    
-            {
-              "nodes": [
-                {
-                  "sitemap_node_id": "59658d3e437b8eed",
-                  "name": "Home",
-                },
-                {
-                  "sitemap_node_id": "ad66575ac0f9c35e",
-                  "name": "Events",
-                  "children": [
-                    {
-                      "sitemap_node_id": "0221017fe29c1bdb",
-                      "name": "USA",
-                    },
-                    {
-                      "sitemap_node_id": "b23cff116eba3c1b",
-                      "name": "Europe",
-                    }
-                  ]
-                },
-                {
-                  "sitemap_node_id": "2707dd12ab3ffd87",
-                  "name": "Blog",
-                }
-              ]
-            }
             
 ## Assets [/projects/{project_id}/asset/{asset_id}]
 
@@ -163,10 +133,10 @@ Download link expires after 60 minutes.
 # Data Structures
 
 ## Content Type (object)
-+ `type_id`: 8e879b999dd26639 (string, required)
++ `type_id`: 2e9b7cdd-e623-4918-a3f0-eb237878723c (string, required)
 + name: Blog (string, required) - Max 50 characters
 + elements (array)
-    - (StringTypeElement)
+    - (TextTypeElement)
     - (RichTextTypeElement)
     - (NumberTypeElement)
     - (DateTimeTypeElement)
@@ -183,56 +153,49 @@ Download link expires after 60 minutes.
     - assets
     - modular_content
     - date_time
-+ guidelines (string)
 
 ## AssetTypeElement (TypeElementBase)
 + `type_element_id`: 9abb70a524a65e00
 + name: Teaser image
 + type: assets
-+ guidelines: `Attach teaser image, max. dimensions are 1024 × 400 px, allowed formats are *.jpg, *.png, *.gif.`
 
 ## DateTimeTypeElement (TypeElementBase)
 + `type_element_id`: bef3ad230736ead1
 + name: Publication date
 + type: date_time
-+ guidelines: `Provide the date that should appear on a live site as the date this article was posted live. Furthermore, this date will influence the order of the articles in the list of articles.`
 
 ## NumberTypeElement (TypeElementBase)
 + `type_element_id`: bcc618ae3faf21eb
 + name: Price in USD
 + type: number
-+ guidelines: `Article price. 0 means this artcile is free.`
 
-## StringTypeElement (TypeElementBase)
+## TextTypeElement (TypeElementBase)
 + `type_element_id`: a0b10a4d16fa9186
 + name: Title
 + type: string
-+ guidelines: `Provide a title that will fit within 60 characters.`
 
-## RichTextTypeElement (StringTypeElement)
+## RichTextTypeElement (TypeElementBase)
 + `type_element_id`: bfc7bf641ad5350c
 + name: Body
 + type: rich_text
-+ guidelines: `Keep the blog post structured with concise paragraphs complemented with headlines that will help the reader navigate through the article's content.`
 
 ## ModularContentTypeElement (TypeElementBase)
 + `type_element_id`: bc6ff87ec6aa95f0
 + name: Features
 + type: modular_content
-+ guidelines: `Assign at most 3 Features that have been prepared for a home page.`
 
 ############################################
 
 ## Content Item (object)
-+ `item_id`: 8d2c787c7b08ad9c (string, required)
-+ name: Blog post (string, required) - Max 50 characters
++ `item_id`: f22608f6-f037-4dda-8869-9924023fec7b (string, required)
++ name: `Blog post (string, required)` - Max 50 characters
 + sitemam_location (array[string])
-    - 821fe4ebbbbf7cd2
-    - a8fec4b5039816d9
+    - 21111b5e-6cc9-46b2-a27b-c28c5f4a0b4f
+    - 2e9b7cdd-e623-4918-a3f0-eb237878723c
 + last_modified: 2016-06-09T14:41:10.6814919Z (string, required)
 + workflow_status (Workflow Status, required)
 + elements (array)
-    - (StringItemElement)
+    - (TextItemElement)
     - (RichTextItemElement)
     - (NumberItemElement)
     - (DateTimeItemElement)
@@ -240,7 +203,7 @@ Download link expires after 60 minutes.
     - (ModularContentItemElement)
 
 ## Workflow Status (object)
-+ workflow_id: 9ad09d2e5f7532ae
++ workflow_id: 2e9b7cdd-e623-4918-a3f0-eb237878723c
 + name: Draft (string, required)
 + color: red (enum, required)
     - red
@@ -296,12 +259,12 @@ Download link expires after 60 minutes.
 + name: Price in USD
 + value: 49.9 (number, optional)
 
-## StringItemElement (ItemElementBase)
+## TextItemElement (ItemElementBase)
 + `item_id`: ba0b10a4d16fa9186
 + name: Title
 + value: Sample blog post (string, optional)
 
-## RichTextItemElement (StringItemElement)
+## RichTextItemElement (ItemElementBase)
 + `item_id`: 8bfc7bf641ad5350c
 + name: Body
 + type: rich_text

@@ -42,7 +42,7 @@ Both content inventory and content models are always a part of a project.
 
 + Parameters
 
-    + project_id: `61e5869247c24e3c` (string, required)
+    + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
     
 ### Get all Content Types [GET]
 + Request
@@ -53,11 +53,14 @@ Both content inventory and content models are always a part of a project.
 + Response 200 (application/json)
     + Attributes (array[Content Type])
     
-## Content Items [/projects/{project_id}/items]
+## Content Items [/projects/{project_id}/items{?sitemap_location,workflow_status,content_type}]
 
 + Parameters
 
-    + project_id: `61e5869247c24e3c` (string, required)
+    + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
+    + sitemap_location: `05280be0-639a-4fc5-b3a6-7a2ea5101ab9` (string, optional) - Get only items assigned to a sitemap location. You can use this parameter more times to filter by multiple sitemap locations.
+    + workflow_status: `21111b5e-6cc9-46b2-a27b-c28c5f4a0b4f` (string, optional) - Get only items with a workflow status. For example, only approved items.
+    + content_type: `f82e215c-45e6-46e6-8388-c6a578291cd7` (string, optional) - Get only items for a single content type.
 
 ### Get Content Items [GET]
 + Request
@@ -71,16 +74,16 @@ Both content inventory and content models are always a part of a project.
         + pages - simple forward only paging
             + items_count: 128
             + pages_count: 13
-            + previous: ` `
-            + next: `https://api-draft.kenticocloud.com/projects/61e5869247c24e3c/items?page=2`
-            + first: `https://api-draft.kenticocloud.com/projects/61e5869247c24e3c/items`
-            + last: `https://api-draft.kenticocloud.com/projects/61e5869247c24e3c/items?page=13`
+            + previous: ``
+            + next: `https://api-draft.kenticocloud.com/projects/54da688e-5489-467d-bd25-28882f4f054d/items?page=2`
+            + first: `https://api-draft.kenticocloud.com/projects/54da688e-5489-467d-bd25-28882f4f054d/items`
+            + last: `https://api-draft.kenticocloud.com/projects/54da688e-5489-467d-bd25-28882f4f054d/items?page=13`
     
 ## Workflow [/projects/{project_id}/workflow]
 
 + Parameters
 
-    + project_id: `61e5869247c24e3c` (string, required)
+    + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
 
 ### Get Workflow [GET]
 + Request
@@ -95,7 +98,7 @@ Both content inventory and content models are always a part of a project.
 
 + Parameters
 
-    + project_id: `61e5869247c24e3c` (string, required)
+    + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
 
 ### Get Sitemap [GET]
 + Request
@@ -139,8 +142,8 @@ Both content inventory and content models are always a part of a project.
 
 + Parameters
 
-    + project_id: 61e5869247c24e3c (string, required)
-    + asset_id: 924ea5f1e4c68ed8 (string, required) 
+    + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
+    + asset_id: `287b779d-9ceb-4c8f-96c4-ea4fdb22b09d` (string, required) 
 
 ### Get Asset Download Link [GET]
 Download link expires after 60 minutes.
@@ -152,8 +155,8 @@ Download link expires after 60 minutes.
 
 + Response 200 (application/json)
     + Attributes
-        + link: `https://kenticodraft.net/970c4e479a69e9fa/adc496cbfa09f729/blogpost_teaser.jpg?sv=2015-02-21&sig=FVArbWI7zCodmEMJ69DE4JCiyfhqj` (string, required) - link from which download file by simple HTTPS GET
-        + exp: `2016-06-11T12:55:28.29493Z` (string, required) - ISO 8601 date time of download link expiration
+        + link: `https://horusdevelopment.blob.core.windows.net/54da688e-5489-467d-bd25-28882f4f054d/287b779d-9ceb-4c8f-96c4-ea4fdb22b09d/blogpost_teaser.jpg?sv=2015-02-21&sig=FVArbWI7zCodmEMJ69DE4JCiyfhqj` (string, required) - Temporary asset download link.
+        + exp: `2016-06-11T12:55:28.29493Z` (string, required) - Asset download link expiration date and time in ISO 8601 format.
 
 ##########################################################
 

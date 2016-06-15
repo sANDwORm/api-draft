@@ -5,19 +5,19 @@ HOST: https://api-draft.kenticocloud.com/
 
 ![Kentico Draft](https://kenticocloud.com/logotypes/kentico_draft_rgb_small.png)
 
-Kentico Draft API helps you automate exporting content from Kentico Draft to the CMS of your choice. By accessing the whole content inventory, you can build your own integrations or one-off scripts to export content.
+Kentico Draft API helps you automate exporting content from Kentico Draft to the CMS of your choice. By accessing the whole content inventory, you can build your integrations or one-off scripts to export content.
 
 ## Authorization
-TODO: How to get AuthToken
+To know that it's really you, we need you to include some information in the HTTP request. Every API call should contain your API Key and Access token.
 
 ### API Key
-
-### Auth0 account
+Getting an API Key is easy, just drop us a line at draft@kentico.com and we'll give you a free key.
 
 ### Acces Token
+Getting an Access token takes zero effort. We'll provide you one when giving you anyour API Key.
 
 ## Projects [/projects]
-Both content inventory and content models are always a part of a project.
+Project is where all your content is stored. Both content inventory and content models are always a part of a project.
 + Attributes
     + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
     + name: `Sample project` (string, required)
@@ -25,21 +25,14 @@ Both content inventory and content models are always a part of a project.
 ### Get All Projects [GET]
 + Request
     + Headers
-
+    
             Authorization: Bearer {access_token}
 
 + Response 200 (application/json)
     + Attributes (array[Project])
 
-    + Body
-    
-            [
-                {"project_id": "54da688e-5489-467d-bd25-28882f4f054d", "name": "Sample project"}, 
-                {"project_id": "aeea9a97-041a-4e64-be57-ede0f0be14d4", "name": "Project without delays"}
-            ]
-
 ## Content Types [/projects/{project_id}/types]
-
+Content types define the structure of your content items.
 + Parameters
 
     + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
@@ -47,7 +40,7 @@ Both content inventory and content models are always a part of a project.
 ### Get all Content Types [GET]
 + Request
     + Headers
-
+    
             Authorization: Bearer {access_token}
 
 + Response 200 (application/json)
@@ -57,12 +50,13 @@ Both content inventory and content models are always a part of a project.
 
 + Parameters
 
-    + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
-    + sitemap_location: `05280be0-639a-4fc5-b3a6-7a2ea5101ab9` (string, optional) - Get only items assigned to a sitemap location. You can use this parameter more times to filter by multiple sitemap locations.
-    + workflow_status: `21111b5e-6cc9-46b2-a27b-c28c5f4a0b4f` (string, optional) - Get only items with a workflow status. For example, only approved items.
-    + content_type: `f82e215c-45e6-46e6-8388-c6a578291cd7` (string, optional) - Get only items for a single content type.
+    + project_id: `21111b5e-6cc9-46b2-a27b-c28c5f4a0b4f` (string, required)
+    + sitemap_location: `31675d56-513b-438b-a9ac-9b7ebcf91efa` (string, optional) - Include sitemap location ID to get only items assigned to this location. You can use this parameter multiple times to get items from more locations at once.
+    + workflow_status: `2e9b7cdd-e623-4918-a3f0-eb237878723c` (string, optional) - Include workflow status ID to get only items with this status. For example, only approved items.
+    + content_type: `2e9b7cdd-e623-4918-a3f0-eb237878723c` (string, optional) - Include content type ID to get only items of this type.
 
 ### Get Content Items [GET]
+Content inventory holds all your content items.
 + Request
     + Headers
 
@@ -71,7 +65,7 @@ Both content inventory and content models are always a part of a project.
 + Response 200 (application/json)
     + Attributes 
         + data (array[Content Item])
-        + pages - simple forward only paging
+        + metadata - simple forward only paging
             + items_count: 128
             + pages_count: 13
             + current_page: 1
@@ -84,6 +78,7 @@ Both content inventory and content models are always a part of a project.
     + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
 
 ### Get Workflow [GET]
+Workflos steps help you to distinguish what items are approved for import.
 + Request
     + Headers
 
@@ -99,6 +94,7 @@ Both content inventory and content models are always a part of a project.
     + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
 
 ### Get Sitemap [GET]
+Sitemap location helps you to get only content items which you're currently importing.
 + Request
     + Headers
 
@@ -116,7 +112,7 @@ Both content inventory and content models are always a part of a project.
     + asset_id: `287b779d-9ceb-4c8f-96c4-ea4fdb22b09d` (string, required) 
 
 ### Get Asset Download Link [GET]
-Download link expires after 60 minutes.
+Kentico Draft API allows you to generate a download link for your assets. Download link expires after 60 minutes.
 
 + Request
     + Headers
@@ -132,8 +128,12 @@ Download link expires after 60 minutes.
 
 # Data Structures
 
+## Project (object)
++ `project_id` : `21111b5e-6cc9-46b2-a27b-c28c5f4a0b4f` (string)
++ name: Sample Project (string)
+
 ## Content Type (object)
-+ `type_id`: 2e9b7cdd-e623-4918-a3f0-eb237878723c (string, required)
++ `type_id`: `2e9b7cdd-e623-4918-a3f0-eb237878723c` (string, required)
 + name: Blog (string, required) - Max 50 characters
 + elements (array)
     - (TextTypeElement)
@@ -155,43 +155,43 @@ Download link expires after 60 minutes.
     - date_time
 
 ## AssetTypeElement (TypeElementBase)
-+ `type_element_id`: 9abb70a524a65e00
++ `type_element_id`: `a3a31bea-fbbf-4534-8002-a1907955f537`
 + name: Teaser image
 + type: assets
 
 ## DateTimeTypeElement (TypeElementBase)
-+ `type_element_id`: bef3ad230736ead1
++ `type_element_id`: `3697b5c0-4139-4304-b09d-fff5bc3ccdd4`
 + name: Publication date
 + type: date_time
 
 ## NumberTypeElement (TypeElementBase)
-+ `type_element_id`: bcc618ae3faf21eb
++ `type_element_id`: `644d2ddc-2af5-4665-8c04-6ceb2ad1313b`
 + name: Price in USD
 + type: number
 
 ## TextTypeElement (TypeElementBase)
-+ `type_element_id`: a0b10a4d16fa9186
++ `type_element_id`: `f97149c2-ac83-49c1-b23d-9ba597460a10`
 + name: Title
-+ type: string
++ type: text
 
 ## RichTextTypeElement (TypeElementBase)
-+ `type_element_id`: bfc7bf641ad5350c
++ `type_element_id`: `af4ca3fb-870a-48b0-88bf-10175a6efc3e`
 + name: Body
 + type: rich_text
 
 ## ModularContentTypeElement (TypeElementBase)
-+ `type_element_id`: bc6ff87ec6aa95f0
++ `type_element_id`: `c7599588-edbd-4ae0-a5dc-91c3240916ef`
 + name: Features
 + type: modular_content
 
 ############################################
 
 ## Content Item (object)
-+ `item_id`: f22608f6-f037-4dda-8869-9924023fec7b (string, required)
++ `item_id`: `f22608f6-f037-4dda-8869-9924023fec7b` (string, required)
 + name: `Blog post (string, required)` - Max 50 characters
 + sitemam_location (array[string])
-    - 21111b5e-6cc9-46b2-a27b-c28c5f4a0b4f
-    - 2e9b7cdd-e623-4918-a3f0-eb237878723c
+    - `21111b5e-6cc9-46b2-a27b-c28c5f4a0b4f`
+    - `2e9b7cdd-e623-4918-a3f0-eb237878723c`
 + last_modified: 2016-06-09T14:41:10.6814919Z (string, required)
 + workflow_status (Workflow Status, required)
 + elements (array)
@@ -243,39 +243,41 @@ Download link expires after 60 minutes.
 + last_modified: 2016-03-31T08:04:14.7525987Z (string, required) - time of asset upload
 
 ## AssetItemElement (ItemElementBase)
-+ `item_id`: e9abb70a524a65e00
++ `item_id`: `a3a31bea-fbbf-4534-8002-a1907955f537`
 + type: asset
 + name: Teaser image
 + value (array[Asset], required) - list of assets
 
 ## DateTimeItemElement (ItemElementBase)
-+ `item_id`: cbef3ad230736ead1
++ `item_id`: `323344d1-0c9b-473f-b4ed-64c6d8517ac6`
 + name: Publication date
 + type: date_time (string, optional) - ISO 8601 date time
 + value: 2016-03-19T00:00:00Z
 
 ## NumberItemElement (ItemElementBase)
-+ `item_id`: abcc618ae3faf21eb
++ `item_id`: `97b08987-e080-431e-bb8d-b3da93ea63f9`
 + name: Price in USD
 + value: 49.9 (number, optional)
 
 ## TextItemElement (ItemElementBase)
-+ `item_id`: ba0b10a4d16fa9186
++ `item_id`: `3da49f85-ae9d-4974-9f8b-f2935f9027bf`
 + name: Title
++ type: text
 + value: Sample blog post (string, optional)
 
 ## RichTextItemElement (ItemElementBase)
-+ `item_id`: 8bfc7bf641ad5350c
++ `item_id`: `763bf239-075c-41e8-b5b2-704cc7e9fc0c`
 + name: Body
 + type: rich_text
 + value: `<p>There are many different types of blogs, differing not only in the type of content, but also in the way that content is delivered or written.&nbsp;</p>\n<h2>Personal blogs</h2>` (string, optional)
 
 ## Content Item Reference (object)
-+ `item_id`: 8d2c787c7b08ad9c (string, required)
++ `item_id`: `02845986-6c4f-4eb6-a820-e8f4493feacd` (string, required)
 + name: Blog post (string, required)
++ link: `https://api-draft.kenticocloud.com/projects/54da688e-5489-467d-bd25-28882f4f054d/items/02845986-6c4f-4eb6-a820-e8f4493feacd`
 
 ## ModularContentItemElement (ItemElementBase)
-+ `item_id`: fbc6ff87ec6aa95f0
++ `item_id`: `31675d56-513b-438b-a9ac-9b7ebcf91efa`
 + name: Features
 + type: modular_content
 + value (array[Content Item Reference], required)
@@ -283,7 +285,7 @@ Download link expires after 60 minutes.
 ############################################
 
 ## Sitemap Node (object)
-+ `sitemap_node_id`: 897f-8e395386de7a (string, required)
++ `sitemap_node_id`: `31675d56-513b-438b-a9ac-9b7ebcf91efa` (string, required)
 + name: Home (string, required)
 + children (array[Sitemap Node])
 

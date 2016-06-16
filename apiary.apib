@@ -7,14 +7,51 @@ HOST: https://api-draft.kenticocloud.com/
 
 Kentico Draft API helps you automate exporting content from Kentico Draft to the CMS of your choice. By accessing the whole content inventory, you can build your integrations or one-off scripts to export content.
 
-## Authorization
-To know that it's really you, we need you to include some information in the HTTP request. Every API call should contain your API Key and Access token.
+Following tutorials will help you get started.
 
-### API Key
-Getting an API Key is easy, just drop us a line at draft@kentico.com and we'll give you a free key.
+## Getting content items
+After content in Kentico Draft is approved and ready for import into a CMS, you can use Draft API to get the finished content items. Now, we’ll show you in 6 simple steps how you can get all content items of a content inventory section.
+### 1. Configure authorization
+To keep your inventory private, we will need to recognize your requests using an API Key. Drop us a line at draft@kentico.com and we’ll send you back your API key. To understand better, how you intend to use our API, please briefly describe the following:
 
-### Acces Token
-Getting an Access token takes zero effort. We'll provide you one when giving you anyour API Key.
+* Where will the API be used? (CMS custom module, Standalone application, One-off script, other)
+* What programming language will be used to call our API?
+* What CMS are you using for displaying the content?
+
+Once you have your API Key, you can authorize your requests by including the Key in the Authorization header:
+
+<pre>Authorization:Bearer {access_token}</pre>
+
+
+### 2. Get a project
+The content inventory and content models are a part of a project. All resources are a part of a project. You need to include the project ID in URL for every REST call on items, types, workflow, sitemap or assets.
+
+To get a project ID, [get the list of all projects](#reference/0/projects/get-all-projects). Then, pick your project and save the project ID.
+
+### 3. Get a content type
+The content inventory contains items of various content types. You can use Draft API to get only items of a specific content type. Now, we’ll show you how you can get a content type. You’ll need the ID of this type later on when getting content items.
+
+To get a content type, [get a list of all content types](#reference/0/content-types/get-all-content-types). Then, pick a type and save it for later.
+
+### 4. Get a sitemap location
+The sitemap in Draft helps you to organize content items into a logical structure which gives you a hint how the new website will look. You can use Draft API to get only items assigned to a specific sitemap location. Now, we’ll show you how you can get your sitemap. You’ll need the ID of a sitemap location later on when getting content items.
+
+To get a sitemap location, [get the whole sitemap](#reference/0/sitemap/get-sitemap). Then, pick a location and save it for later. You can pick multiple locations to get items assigned to one of them.
+
+### 5. Get a workflow step
+The content inventory contains items in various steps of content production workflow. You can use Draft API to get only items with a specific workflow step. For example, to get only items which are ready for import to a CMS. Now, we’ll show you how you can get a workflow step. You’ll need the ID of this step later on when getting content items.
+
+To get a workflow step, [get a list of all steps](#reference/0/workflow/get-workflow). Then, pick a step and save it for later.
+
+### 6. Get the content items
+Now, we’ll show you how you can get a list of content items from your content inventory. You can refine items by a content type, workflow step or a sitemap location. To achieve this, include a type ID, step ID or location ID in the query string of your request when [getting content items](#reference/0/content-items/get-content-items) using Draft API.
+
+Note, that when you are getting more than 10 items at once, Draft API will slice the whole list of items into pages. Initially, it will return you the first page with a link to the next page. You can use this link to get the next bunch of items until you reach the last page. To get the items, check the items object of the [response JSON](#reference/0/content-items/get-content-items). To get the next page, check the “pagination.next” string attribute of the [response JSON](#reference/0/content-items/get-content-items).
+
+## Downloading assets
+TODO
+## Getting modular content items
+TODO
 
 ## Projects [/projects]
 Project is where all your content is stored. Both content inventory and content models are always a part of a project.

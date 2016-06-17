@@ -161,6 +161,36 @@ Workflow steps help you to distinguish what items are approved for import.
 + Response 200 (application/json)
     + Attributes (array[Workflow Status])
     
+    + Body
+    
+            [
+              {
+                "_id": "2311ca28-b696-4fc7-ac27-340cc9c4e53d",
+                "name": "Draft",
+                "color": "red"
+              },
+              {
+                "_id": "7ff9f463-008a-4bed-b979-fa7868f34585",
+                "name": "Review",
+                "color": "yellow"
+              },re
+              {
+                "_id": "a871b156-7eb6-45d8-805a-c3bfa2f53a22",
+                "name": "SEO verification",
+                "color": "lime"
+              },
+              {
+                "_id": "dd472b79-fb4e-4e2d-9270-449bc69c6cd4",
+                "name": "Ready for approval",
+                "color": "teal"
+              },
+              {
+                "_id": "65e025db-1a04-4b9d-b366-408e09b58cb7",
+                "name": "Approved",
+                "color": "blue"
+              }
+            ]
+    
 ## Sitemap [/projects/{project_id}/sitemap]
 Sitemap location helps you to get only content items which you're currently importing.
 + Parameters
@@ -176,6 +206,40 @@ Sitemap location helps you to get only content items which you're currently impo
 + Response 200 (application/json)
     + Attributes (Sitemap)
     
+    + Body
+        
+            {
+             _id: `0d5adc73-ba63-45e6-8fc4-e2d751cf1ca0`,
+              name: `sitemap`,
+              children: [
+                {
+                  _id: `9ee4e597-40c3-266d-5965-8d3e437b8eed`,
+                  name: `Home`,
+                  children: []
+                },
+                {
+                  _id: `6fc2bcbc-8500-e855-ad66-575ac0f9c35e`,
+                  name: `Events`,
+                  children: [
+                    {
+                      _id: `82ec09fb-8851-551e-0221-017fe29c1bdb`,
+                      name: `USA`,
+                      children: []
+                    },
+                    {
+                      _id: `326e8b6b-2df2-a223-b23c-ff116eba3c1b`,
+                      name: `Europe`,
+                      children: []
+                    }
+                  ]
+                },
+                {
+                  _id: `6200a4bf-a89b-9c53-2707-dd12ab3ffd87`,
+                  name: `Blog`,
+                  children: []
+                }
+              ]
+            }
             
 ## Assets [/projects/{project_id}/asset/{asset_id}]
 Kentico Draft API allows you to generate a download link for your assets. Download link expires after 60 minutes.
@@ -358,7 +422,7 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 ## Sitemap Node (object)
 + `sitemap_node_id`: `31675d56-513b-438b-a9ac-9b7ebcf91efa` (string, required)
 + name: Home (string, required)
-+ children (array[Sitemap Node])
++ children (array[Sitemap Node], required)
 
 ## Sitemap (object)
 + nodes (array[Sitemap Node])

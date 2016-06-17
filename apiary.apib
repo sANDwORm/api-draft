@@ -173,7 +173,7 @@ Workflow steps help you to distinguish what items are approved for import.
                 "_id": "7ff9f463-008a-4bed-b979-fa7868f34585",
                 "name": "Review",
                 "color": "yellow"
-              },re
+              },
               {
                 "_id": "a871b156-7eb6-45d8-805a-c3bfa2f53a22",
                 "name": "SEO verification",
@@ -190,6 +190,7 @@ Workflow steps help you to distinguish what items are approved for import.
                 "color": "blue"
               }
             ]
+            
     
 ## Sitemap [/projects/{project_id}/sitemap]
 Sitemap location helps you to get only content items which you're currently importing.
@@ -209,34 +210,34 @@ Sitemap location helps you to get only content items which you're currently impo
     + Body
         
             {
-             _id: `0d5adc73-ba63-45e6-8fc4-e2d751cf1ca0`,
-              name: `sitemap`,
-              children: [
+              "_id": "0d5adc73-ba63-45e6-8fc4-e2d751cf1ca0",
+              "name": "sitemap",
+              "children": [
                 {
-                  _id: `9ee4e597-40c3-266d-5965-8d3e437b8eed`,
-                  name: `Home`,
-                  children: []
+                  "_id": "9ee4e597-40c3-266d-5965-8d3e437b8eed",
+                  "name": "Home",
+                  "children": []
                 },
                 {
-                  _id: `6fc2bcbc-8500-e855-ad66-575ac0f9c35e`,
-                  name: `Events`,
-                  children: [
+                  "_id": "6fc2bcbc-8500-e855-ad66-575ac0f9c35e",
+                  "name": "Events",
+                  "children": [
                     {
-                      _id: `82ec09fb-8851-551e-0221-017fe29c1bdb`,
-                      name: `USA`,
-                      children: []
+                      "_id": "82ec09fb-8851-551e-0221-017fe29c1bdb",
+                      "name": "USA",
+                      "children": []
                     },
                     {
-                      _id: `326e8b6b-2df2-a223-b23c-ff116eba3c1b`,
-                      name: `Europe`,
-                      children: []
+                      "_id": "326e8b6b-2df2-a223-b23c-ff116eba3c1b",
+                      "name": "Europe",
+                      "children": []
                     }
                   ]
                 },
                 {
-                  _id: `6200a4bf-a89b-9c53-2707-dd12ab3ffd87`,
-                  name: `Blog`,
-                  children: []
+                  "_id": "6200a4bf-a89b-9c53-2707-dd12ab3ffd87",
+                  "name": "Blog",
+                  "children": []
                 }
               ]
             }
@@ -338,7 +339,7 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
     - (ModularContentItemElement)
 
 ## Workflow Status (object)
-+ workflow_id: `bb6aeed9-d162-46f2-a985-210b1f0127b7`
++ workflow_id: `bb6aeed9-d162-46f2-a985-210b1f0127b7` (string, required)
 + name: Draft (string, required)
 + color: red (enum, required)
     - red
@@ -377,44 +378,45 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 + size: `135897` (number, required) - size of file (unsigned integer)
 + last_modified: `2016-03-31T08:04:14.7525987Z` (string, required) - time of asset upload
 
-## AssetItemElement (ItemElementBase)
-+ `item_id`: `a3a31bea-fbbf-4534-8002-a1907955f537`
-+ type: asset
-+ name: Teaser image
+## AssetItemElement (object)
++ `item_id`: `a3a31bea-fbbf-4534-8002-a1907955f537` (string, required)
++ type: asset (string, required)
++ name: Teaser image (string, required)
 + value (array[Asset], required) - list of assets
 
-## DateTimeItemElement (ItemElementBase)
-+ `item_id`: `323344d1-0c9b-473f-b4ed-64c6d8517ac6`
-+ name: Publication date
+## DateTimeItemElement (object)
++ `item_id`: `323344d1-0c9b-473f-b4ed-64c6d8517ac6` (string, required)
++ name: Publication date (string, required)
 + type: date_time (string, optional) - ISO 8601 date time
-+ value: `2016-03-19T00:00:00Z`
++ value: `2016-03-19T00:00:00Z` (string, required)
 
-## NumberItemElement (ItemElementBase)
-+ `item_id`: `97b08987-e080-431e-bb8d-b3da93ea63f9`
-+ name: Price in USD
+## NumberItemElement (object)
++ `item_id`: `97b08987-e080-431e-bb8d-b3da93ea63f9` (string, required)
++ type: number (string, required)
++ name: `Price in USD` (string, required)
 + value: 49.9 (number, optional)
 
-## TextItemElement (ItemElementBase)
-+ `item_id`: `3da49f85-ae9d-4974-9f8b-f2935f9027bf`
-+ name: Title
-+ type: text
+## TextItemElement (object)
++ `item_id`: `3da49f85-ae9d-4974-9f8b-f2935f9027bf` (string, required)
++ name: Title (string, required)
++ type: text (string, required)
 + value: Sample blog post (string, optional)
 
-## RichTextItemElement (ItemElementBase)
-+ `item_id`: `763bf239-075c-41e8-b5b2-704cc7e9fc0c`
-+ name: Body
-+ type: rich_text
+## RichTextItemElement (object)
++ `item_id`: `763bf239-075c-41e8-b5b2-704cc7e9fc0c` (string, required)
++ name: Body (string, required)
++ type: `rich_text` (string, required)
 + value: `<p>There are many different types of blogs, differing not only in the type of content, but also in the way that content is delivered or written.&nbsp;</p>\n<h2>Personal blogs</h2>` (string, optional)
 
 ## Content Item Reference (object)
 + `item_id`: `02845986-6c4f-4eb6-a820-e8f4493feacd` (string, required)
 + name: Blog post (string, required)
-+ link: `https://api-draft.kenticocloud.com/projects/54da688e-5489-467d-bd25-28882f4f054d/items/02845986-6c4f-4eb6-a820-e8f4493feacd`
++ link: `https://api-draft.kenticocloud.com/projects/54da688e-5489-467d-bd25-28882f4f054d/items/02845986-6c4f-4eb6-a820-e8f4493feacd` (string, required)
 
-## ModularContentItemElement (ItemElementBase)
-+ `item_id`: `31675d56-513b-438b-a9ac-9b7ebcf91efa`
-+ name: Features
-+ type: modular_content
+## ModularContentItemElement (object)
++ `item_id`: `31675d56-513b-438b-a9ac-9b7ebcf91efa` (string, required)
++ name: Features (string, required)
++ type: `modular_content` (string, required)
 + value (array[Content Item Reference], required)
 
 ############################################

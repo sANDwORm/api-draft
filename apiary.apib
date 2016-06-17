@@ -1,16 +1,33 @@
 FORMAT: 1A
 HOST: https://api-draft.kenticocloud.com/
 
-# Kentico Draft API
+# Kentico Draft API Reference
+## Getting started with Kentico Draft API
+Welcome to the Kentico Draft API reference! The Kentico Draft API is based on REST. This documentation lists and describes the individual resources you can use to manipulate objects in Kentico Draft.
 
-![Kentico Draft](https://kenticocloud.com/logotypes/kentico_draft_rgb_small.png)
+Often individual resources are used together in complex use cases. Following use cases will help you get started:
+*   [Getting content items](#introduction/getting-content-items)
+*   [Downloading assets](#introduction/downloading-assets)
+*   [Getting modular content items](#introduction/getting-modular-content-items)
 
-Kentico Draft API helps you automate exporting content from Kentico Draft to the CMS of your choice. By accessing the whole content inventory, you can build your integrations or one-off scripts to export content.
+### Typical Server Responses
+*   <code>200</code> OK - The request was successful
+*   <code>201</code> Created - The request was successful and a resource was created
+*   <code>204</code> No Content - The request was successful but there is no representation to return (that is, the response is empty)
+*   <code>400</code> Bad Request - The request could not be understood or was missing required parameters
+*   <code>401</code> Unauthorized - Authentication failed or user does not have permissions for the requested operation
+*   <code>403</code> Forbidden - Access denied
+*   <code>404</code> Not Found - Resource was not found
+*   <code>405</code> Method Not Allowed - Requested method is not supported for the specified resource
 
-Following tutorials will help you get started.
+### Feedback and Help
+If you have ideas about how we can improve Draft API or this documentation (or want to share with us any comments), email us at draft@kentico.com.
+
+We're always glad to answer all your questions or share qith you our future plans. Drop us a line at draft@kentico.com.
 
 ## Getting content items
 After content in Kentico Draft is approved and ready for import into a CMS, you can use Draft API to get the finished content items. Now, we’ll show you in 6 simple steps how you can get all content items of a content inventory section.
+
 ### 1. Configure authorization
 To keep your inventory private, we will need to recognize your requests using an API Key. Drop us a line at draft@kentico.com and we’ll send you back your API key. To understand better, how you intend to use our API, please briefly describe the following:
 

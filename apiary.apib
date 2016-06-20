@@ -110,9 +110,9 @@ Content types define the structure of your content items.
 Content items contain content for your website.
 + Parameters
 
-    + project_id: `21111b5e-6cc9-46b2-a27b-c28c5f4a0b4f` (string, required)
-    + sitemap_location: `31675d56-513b-438b-a9ac-9b7ebcf91efa` (string, optional) - Include sitemap location ID to get only items assigned to this location. You can use this parameter multiple times to get items from more locations at once.
-    + workflow_status: `2e9b7cdd-e623-4918-a3f0-eb237878723c` (string, optional) - Include workflow status ID to get only items with this status. For example, only approved items.
+    + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
+    + sitemap_location: `9ee4e597-40c3-266d-5965-8d3e437b8eed` (string, optional) - Include sitemap location ID to get only items assigned to this location. You can use this parameter multiple times to get items from more locations at once.
+    + workflow_status: `65e025db-1a04-4b9d-b366-408e09b58cb7` (string, optional) - Include workflow status ID to get only items with this status. For example, only approved items.
     + content_type: `2e9b7cdd-e623-4918-a3f0-eb237878723c` (string, optional) - Include content type ID to get only items of this type.
 
 ### Get Content Items [GET]
@@ -134,7 +134,7 @@ Content items contain content for your website.
 A single content item contains content for one web page or a smaller content block.
 + Parameters
 
-    + project_id: `21111b5e-6cc9-46b2-a27b-c28c5f4a0b4f` (string, required)
+    + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
     + item_id: `f22608f6-f037-4dda-8869-9924023fec7b` (string, required)
 
 ### Get Content Item [GET]
@@ -265,7 +265,7 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 # Data Structures
 
 ## Project (object)
-+ `project_id` : `21111b5e-6cc9-46b2-a27b-c28c5f4a0b4f` (string, required)
++ `project_id` : `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
 + name: Sample Project (string, required)
 
 ## Content Type (object)
@@ -280,32 +280,32 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
     - (ModularContentTypeElement)
 
 ## AssetTypeElement (object)
-+ `type_element_id`: `a3a31bea-fbbf-4534-8002-a1907955f537` (string, required)
++ `element_id`: `a3a31bea-fbbf-4534-8002-a1907955f537` (string, required)
 + name: Teaser image (string, required)
 + type: assets (string, required)
 
 ## DateTimeTypeElement (object)
-+ `type_element_id`: `3697b5c0-4139-4304-b09d-fff5bc3ccdd4` (string, required)
++ `element_id`: `3697b5c0-4139-4304-b09d-fff5bc3ccdd4` (string, required)
 + name: Publication date (string, required)
 + type: `date_time` (string, required)
 
 ## NumberTypeElement (object)
-+ `type_element_id`: `644d2ddc-2af5-4665-8c04-6ceb2ad1313b` (string, required)
++ `element_id`: `644d2ddc-2af5-4665-8c04-6ceb2ad1313b` (string, required)
 + name: Price in USD (string, required)
 + type: number (string, required)
 
 ## TextTypeElement (object)
-+ `type_element_id`: `f97149c2-ac83-49c1-b23d-9ba597460a10` (string, required)
++ `element_id`: `f97149c2-ac83-49c1-b23d-9ba597460a10` (string, required)
 + name: Title (string, required)
 + type: text (string, required)
 
 ## RichTextTypeElement (object)
-+ `type_element_id`: `af4ca3fb-870a-48b0-88bf-10175a6efc3e` (string, required)
++ `element_id`: `af4ca3fb-870a-48b0-88bf-10175a6efc3e` (string, required)
 + name: Body (string, required)
 + type: `rich_text` (string, required)
 
 ## ModularContentTypeElement (object)
-+ `type_element_id`: `c7599588-edbd-4ae0-a5dc-91c3240916ef` (string, required)
++ `element_id`: `c7599588-edbd-4ae0-a5dc-91c3240916ef` (string, required)
 + name: Features (string, required)
 + type: `modular_content` (string, required)
 
@@ -314,11 +314,11 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 ## Content Item (object)
 + `item_id`: `f22608f6-f037-4dda-8869-9924023fec7b` (string, required)
 + `type_id` : `2e9b7cdd-e623-4918-a3f0-eb237878723c` (string, required) 
-+ `workflow_status_id`: `bb6aeed9-d162-46f2-a985-210b1f0127b7rewoe` (string, required)
++ `workflow_status_id`: `65e025db-1a04-4b9d-b366-408e09b58cb7` (string, required)
 + name: `Blog post` (string, optional) - Max 50 characters
 + sitemam_location (array[string])
-    - `21111b5e-6cc9-46b2-a27b-c28c5f4a0b4f`
-    - `2e9b7cdd-e623-4918-a3f0-eb237878723c`
+    - `9ee4e597-40c3-266d-5965-8d3e437b8eed`
+    - `6fc2bcbc-8500-e855-ad66-575ac0f9c35e`
 + last_modified: `2016-06-09T14:41:10.6814919Z` (string, required) - ISO 8601 date time
 + elements (array, required)
     - (TextItemElement)
@@ -329,7 +329,7 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
     - (ModularContentItemElement)
 
 ## Workflow Status (object)
-+ workflow_id: `bb6aeed9-d162-46f2-a985-210b1f0127b7` (string, required)
++ workflow_id: `65e025db-1a04-4b9d-b366-408e09b58cb7` (string, required)
 + name: Draft (string, required)
 + color: red (enum, required)
     - red
@@ -351,49 +351,49 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
     - `light-grey`
     
 ## Asset (object)
-+ asset_id: `2e9b7cdd-e623-4918-a3f0-eb237878723c` (string, required)
++ asset_id: `287b779d-9ceb-4c8f-96c4-ea4fdb22b09d` (string, required)
 + name: `blogpost_teaser.jpg` (string, required) - file name
 + type: `image/jpg` (string, required) - file mime type
 + size: `135897` (number, required) - size of file in bytes (unsigned integer)
 + last_modified: `2016-03-31T08:04:14.7525987Z` (string, required) - time of asset upload in ISO 8601 format
 
 ## AssetItemElement (object)
-+ `item_id`: `a3a31bea-fbbf-4534-8002-a1907955f537` (string, required)
++ `element_id`: `a3a31bea-fbbf-4534-8002-a1907955f537` (string, required)
 + type: asset (string, required)
 + name: Teaser image (string, required)
 + value (array[Asset], required) - list of assets
 
 ## DateTimeItemElement (object)
-+ `item_id`: `323344d1-0c9b-473f-b4ed-64c6d8517ac6` (string, required)
++ `element_id`: `3697b5c0-4139-4304-b09d-fff5bc3ccdd4` (string, required)
 + name: Publication date (string, required)
-+ type: date_time (string, required) - ISO 8601 date time
-+ value: `2016-03-19T00:00:00Z` (string, optional)
++ type: date_time (string, required)
++ value: `2016-03-19T00:00:00Z` (string, optional) - ISO 8601 date time
 
 ## NumberItemElement (object)
-+ `item_id`: `97b08987-e080-431e-bb8d-b3da93ea63f9` (string, required)
++ `element_id`: `644d2ddc-2af5-4665-8c04-6ceb2ad1313b` (string, required)
 + type: number (string, required)
 + name: `Price in USD` (string, required)
 + value: 49.9 (number, optional)
 
 ## TextItemElement (object)
-+ `item_id`: `3da49f85-ae9d-4974-9f8b-f2935f9027bf` (string, required)
++ `element_id`: `f97149c2-ac83-49c1-b23d-9ba597460a10` (string, required)
 + name: Title (string, required)
 + type: text (string, required)
 + value: Sample blog post (string, optional)
 
 ## RichTextItemElement (object)
-+ `item_id`: `763bf239-075c-41e8-b5b2-704cc7e9fc0c` (string, required)
++ `element_id`: `af4ca3fb-870a-48b0-88bf-10175a6efc3e` (string, required)
 + name: Body (string, required)
 + type: `rich_text` (string, required)
 + value: `<p>There are many different types of blogs, differing not only in the type of content, but also in the way that content is delivered or written.&nbsp;</p>\n<h2>Personal blogs</h2>` (string, optional)
 
 ## Content Item Reference (object)
-+ `item_id`: `02845986-6c4f-4eb6-a820-e8f4493feacd` (string, required)
++ `element_id`: `02845986-6c4f-4eb6-a820-e8f4493feacd` (string, required)
 + name: Blog post (string, required)
 + link: `https://api-draft.kenticocloud.com/projects/54da688e-5489-467d-bd25-28882f4f054d/items/02845986-6c4f-4eb6-a820-e8f4493feacd` (string, required)
 
 ## ModularContentItemElement (object)
-+ `item_id`: `31675d56-513b-438b-a9ac-9b7ebcf91efa` (string, required)
++ `element_id`: `c7599588-edbd-4ae0-a5dc-91c3240916ef` (string, required)
 + name: Features (string, required)
 + type: `modular_content` (string, required)
 + value (array[Content Item Reference], required)
@@ -401,7 +401,7 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 ############################################
 
 ## Sitemap Node (object)
-+ `sitemap_node_id`: `31675d56-513b-438b-a9ac-9b7ebcf91efa` (string, required)
++ `sitemap_node_id`: `0d5adc73-ba63-45e6-8fc4-e2d751cf1ca0` (string, required)
 + name: Home (string, required)
 + children (array[Sitemap Node], required)
 

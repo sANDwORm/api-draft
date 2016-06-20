@@ -315,11 +315,11 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 + `item_id`: `f22608f6-f037-4dda-8869-9924023fec7b` (string, required)
 + `type_id` : `2e9b7cdd-e623-4918-a3f0-eb237878723c` (string, required) 
 + `workflow_status_id`: `bb6aeed9-d162-46f2-a985-210b1f0127b7rewoe` (string, required)
-+ name: `Blog post (string, required)` - Max 50 characters
++ name: `Blog post` (string, optional) - Max 50 characters
 + sitemam_location (array[string])
     - `21111b5e-6cc9-46b2-a27b-c28c5f4a0b4f`
     - `2e9b7cdd-e623-4918-a3f0-eb237878723c`
-+ last_modified: `2016-06-09T14:41:10.6814919Z` (string, required)
++ last_modified: `2016-06-09T14:41:10.6814919Z` (string, required) - ISO 8601 date time
 + elements (array, required)
     - (TextItemElement)
     - (RichTextItemElement)
@@ -354,8 +354,8 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 + asset_id: `2e9b7cdd-e623-4918-a3f0-eb237878723c` (string, required)
 + name: `blogpost_teaser.jpg` (string, required) - file name
 + type: `image/jpg` (string, required) - file mime type
-+ size: `135897` (number, required) - size of file (unsigned integer)
-+ last_modified: `2016-03-31T08:04:14.7525987Z` (string, required) - time of asset upload
++ size: `135897` (number, required) - size of file in bytes (unsigned integer)
++ last_modified: `2016-03-31T08:04:14.7525987Z` (string, required) - time of asset upload in ISO 8601 format
 
 ## AssetItemElement (object)
 + `item_id`: `a3a31bea-fbbf-4534-8002-a1907955f537` (string, required)
@@ -366,8 +366,8 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 ## DateTimeItemElement (object)
 + `item_id`: `323344d1-0c9b-473f-b4ed-64c6d8517ac6` (string, required)
 + name: Publication date (string, required)
-+ type: date_time (string, optional) - ISO 8601 date time
-+ value: `2016-03-19T00:00:00Z` (string, required)
++ type: date_time (string, required) - ISO 8601 date time
++ value: `2016-03-19T00:00:00Z` (string, optional)
 
 ## NumberItemElement (object)
 + `item_id`: `97b08987-e080-431e-bb8d-b3da93ea63f9` (string, required)

@@ -23,7 +23,7 @@ Often individual resources are used together in complex use cases. Following use
 ### Feedback and Help
 If you have ideas about how we can improve Draft API or this documentation (or want to share with us any comments), email us at draft@kentico.com.
 
-We're always glad to answer all your questions or share qith you our future plans. Drop us a line at draft@kentico.com.
+We're always glad to answer all your questions or share with you our future plans. Drop us a line at draft@kentico.com.
 
 ## Getting content items
 After content in Kentico Draft is approved and ready for import into a CMS, you can use Draft API to get the finished content items. Now, we’ll show you in 6 simple steps how you can get all content items of a content inventory section.
@@ -89,7 +89,7 @@ Project is where all your content is stored. Both content inventory and content 
             Authorization: Bearer {access_token}
 
 + Response 200 (application/json)
-    + Attributes (array[Project])
+    + Attributes (Projects)
 
 ## Content Types [/projects/{project_id}/types]
 Content types define the structure of your content items.
@@ -104,7 +104,7 @@ Content types define the structure of your content items.
             Authorization: Bearer {access_token}
 
 + Response 200 (application/json)
-    + Attributes (array[Content Type])
+    + Attributes (Content Types)
     
 ## All Content Items [/projects/{project_id}/items{?sitemap_location,workflow_status,content_type}]
 Content items contain content for your website.
@@ -123,7 +123,7 @@ Content items contain content for your website.
 
 + Response 200 (application/json)
     + Attributes 
-        + items (array[Content Item])
+        + items (Content Items)
         + pagination - simple forward only paging
             + items_count: 128
             + pages_count: 13
@@ -159,37 +159,35 @@ Workflow steps help you to distinguish what items are approved for import.
             Authorization: Bearer {access_token}
 
 + Response 200 (application/json)
-    + Attributes (array[Workflow Status])
+    + Attributes (Workflow Statuses)
     
     + Body
     
-            [
-              {
-                "_id": "2311ca28-b696-4fc7-ac27-340cc9c4e53d",
-                "name": "Draft",
-                "color": "red"
-              },
-              {
-                "_id": "7ff9f463-008a-4bed-b979-fa7868f34585",
-                "name": "Review",
-                "color": "yellow"
-              },
-              {
-                "_id": "a871b156-7eb6-45d8-805a-c3bfa2f53a22",
-                "name": "SEO verification",
-                "color": "lime"
-              },
-              {
-                "_id": "dd472b79-fb4e-4e2d-9270-449bc69c6cd4",
-                "name": "Ready for approval",
-                "color": "teal"
-              },
-              {
-                "_id": "65e025db-1a04-4b9d-b366-408e09b58cb7",
-                "name": "Approved",
-                "color": "blue"
-              }
-            ]
+            {
+              "statuses": [
+                {
+                  "_id": "2311ca28-b696-4fc7-ac27-340cc9c4e53d",
+                  "name": "Draft",
+                  "color": "red"
+                }, {
+                  "_id": "7ff9f463-008a-4bed-b979-fa7868f34585",
+                  "name": "Review",
+                  "color": "yellow"
+                }, {
+                  "_id": "a871b156-7eb6-45d8-805a-c3bfa2f53a22",
+                  "name": "SEO verification",
+                  "color": "lime"
+                }, {
+                  "_id": "dd472b79-fb4e-4e2d-9270-449bc69c6cd4",
+                  "name": "Ready for approval",
+                  "color": "teal"
+                }, {
+                  "_id": "65e025db-1a04-4b9d-b366-408e09b58cb7",
+                  "name": "Approved",
+                  "color": "blue"
+                }
+              ],
+            }
             
     
 ## Sitemap [/projects/{project_id}/sitemap]
@@ -210,9 +208,7 @@ Sitemap location helps you to get only content items which you're currently impo
     + Body
         
             {
-              "_id": "0d5adc73-ba63-45e6-8fc4-e2d751cf1ca0",
-              "name": "sitemap",
-              "children": [
+              "nodes": [
                 {
                   "_id": "9ee4e597-40c3-266d-5965-8d3e437b8eed",
                   "name": "Home",
@@ -268,6 +264,9 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 + `project_id` : `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
 + name: Sample Project (string, required)
 
+## Projects (object)
++ projects (array[Project])
+
 ## Content Type (object)
 + `type_id`: `2e9b7cdd-e623-4918-a3f0-eb237878723c` (string, required)
 + name: Blog (string, required) - Max 50 characters
@@ -278,6 +277,9 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
     - (DateTimeTypeElement)
     - (AssetTypeElement)
     - (ModularContentTypeElement)
+    
+## Content Types (object)
++ types (array[Content Type])
 
 ## AssetTypeElement (object)
 + `element_id`: `a3a31bea-fbbf-4534-8002-a1907955f537` (string, required)
@@ -327,6 +329,9 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
     - (DateTimeItemElement)
     - (AssetItemElement)
     - (ModularContentItemElement)
+    
+## Content Items (object)
++ items (array[Content Item])
 
 ## Workflow Status (object)
 + workflow_id: `65e025db-1a04-4b9d-b366-408e09b58cb7` (string, required)
@@ -349,6 +354,9 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
     - brown
     - grey
     - `light-grey`
+    
+## Workflow Statuses (object)
++ statuses (array[Workflow Status])
     
 ## Asset (object)
 + asset_id: `287b779d-9ceb-4c8f-96c4-ea4fdb22b09d` (string, required)
@@ -399,11 +407,10 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 + value (array[Content Item Reference], required)
 
 ############################################
+## Sitemap (object)
++ nodes (array[Sitemap Node], required)
 
 ## Sitemap Node (object)
 + `sitemap_node_id`: `0d5adc73-ba63-45e6-8fc4-e2d751cf1ca0` (string, required)
 + name: Home (string, required)
 + children (array[Sitemap Node], required)
-
-## Sitemap (object)
-+ nodes (array[Sitemap Node])

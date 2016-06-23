@@ -21,7 +21,7 @@ Often individual resources are used together in complex use cases. Following use
 *   <code>405</code> Method Not Allowed - Requested method is not supported for the specified resource
 
 ### Feedback and Help
-If you have ideas about how we can improve Draft API or this documentation (or want to share with us any comments), email us at draft@kentico.com.
+If you have ideas about how we can improve Draft API or this documentation or want to share with us any comments, email us at draft@kentico.com.
 
 We're always glad to answer all your questions or share with you our future plans. Drop us a line at draft@kentico.com.
 
@@ -41,21 +41,20 @@ Once you have your API Key, you can authorize your requests by including the Key
 
 
 ### 2. Get a project
-The content inventory and content models are a part of a project. All resources are a part of a project. You need to include the project ID in URL for every REST call on items, types, workflow, sitemap or assets.
-
+The content inventory and content models are part of a project. All resources are part of a project. You need to include the project ID in URL for every REST call on items, types, workflow, sitemap or assets.
 To get a project ID, [get the list of all projects](#reference/0/projects/get-all-projects). Then, pick your project and save the project ID.
 
-### 3. Get a content type
+### 3. Get a content type (optional)
 The content inventory contains items of various content types. You can use Draft API to get only items of a specific content type. Now, we’ll show you how you can get a content type. You’ll need the ID of this type later on when getting content items.
 
 To get a content type, [get a list of all content types](#reference/0/content-types/get-all-content-types). Then, pick a type and save it for later.
 
-### 4. Get a sitemap location
+### 4. Get a sitemap location (optional)
 The sitemap in Draft helps you to organize content items into a logical structure which gives you a hint how the new website will look. You can use Draft API to get only items assigned to a specific sitemap location. Now, we’ll show you how you can get your sitemap. You’ll need the ID of a sitemap location later on when getting content items.
 
 To get a sitemap location, [get the whole sitemap](#reference/0/sitemap/get-sitemap). Then, pick a location and save it for later. You can pick multiple locations to get items assigned to one of them.
 
-### 5. Get a workflow step
+### 5. Get a workflow step (optional)
 The content inventory contains items in various steps of content production workflow. You can use Draft API to get only items with a specific workflow step. For example, to get only items which are ready for import to a CMS. Now, we’ll show you how you can get a workflow step. You’ll need the ID of this step later on when getting content items.
 
 To get a workflow step, [get a list of all steps](#reference/0/workflow/get-workflow). Then, pick a step and save it for later.
@@ -66,21 +65,21 @@ Now, we’ll show you how you can get a list of content items from your content 
 Note, that when you are getting more than 10 items at once, Draft API will slice the whole list of items into pages. Initially, it will return you the first page with a link to the next page. You can use this link to get the next bunch of items until you reach the last page. To get the items, check the items object of the [response JSON](#reference/0/all-content-items/get-content-items). To get the next page, check the “pagination.next” string attribute of the [response JSON](#reference/0/content-items/get-content-items).
 
 ## Downloading assets
-When exporting content items from Draft, you might need to download all assets for these items. Draft API allows you to generate a temporary download link, which expires after 60 minutes. 
+When exporting content items from Draft, you might need to download assets included in these items. Draft API allows you to generate a temporary download link, which expires after 60 minutes. 
 
 After [getting content items](#reference/0/all-content-items/get-content-items), find asset content elements of all items from which you want to download assets. You can recognize asset content element, by having a type attribute “asset”. The value of asset content elements is an array of asset metadata. Pick IDs of assets, which we’ll use later.
 
-When you have the assets ID, you can use Draft API to [get a temporary download link](#reference/0/assets/get-asset-download-link).
+When you have the asset ID, you can use Draft API to [get a temporary download link](#reference/0/assets/get-asset-download-link).
 
 ## Getting modular content items
-Content items in Draft may be composed of smaller content blocks called modular content items. You can use Draft API to export modular content items as well. 
+Content items in Draft may be composed of smaller content blocks called modular content items. You can use Draft API to get modular content items as well. 
 
 After [getting content items](#reference/0/all-content-items/get-content-items), find content elements which hold the modular content items. You can recognize modular content elements, by having a type attribute “modular_content”. Pick modular items IDs, which we’ll use later.
 
 When you have the modular content item ID, you can use Draft API to [get that specific content item](#reference/0/one-content-item/get-content-item).
 
 ## Projects [/projects]
-Project is where all your content is stored. Both content inventory and content models are always a part of a project.
+Project is where all your content is stored. Both content inventory and content models are always part of a project.
 
 ### Get All Projects [GET]
 + Request
@@ -111,7 +110,7 @@ Content items contain content for your website.
 + Parameters
 
     + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
-    + sitemap_location: `9ee4e597-40c3-266d-5965-8d3e437b8eed` (string, optional) - Include sitemap location ID to get only items assigned to this location. You can use this parameter multiple times to get items from more locations at once.
+    + sitemap_location: `9ee4e597-40c3-266d-5965-8d3e437b8eed` (string, optional) - Include sitemap location ID to get only items assigned to this location. You can use this parameter multiple times to get items from several locations at once.
     + workflow_status: `65e025db-1a04-4b9d-b366-408e09b58cb7` (string, optional) - Include workflow status ID to get only items with this status. For example, only approved items.
     + content_type: `2e9b7cdd-e623-4918-a3f0-eb237878723c` (string, optional) - Include content type ID to get only items of this type.
 

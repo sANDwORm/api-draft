@@ -23,8 +23,8 @@ This helps you asses potential issues in the future:
 *   <code>404</code> Not Found - Resource was not found
 *   <code>405</code> Method Not Allowed - Requested method is not supported for the specified resource
 *   <code>429</code> Too Many Requests - Request is rejected due to rate limiting as defined in 
-    [rfc6585](https://tools.ietf.org/html/rfc6585#section-4). Value of <code>Retry-After</code> header (seconds) shall be respected.  
-    Additionaly each request under rate limitation includes following headers:
+    [rfc6585](https://tools.ietf.org/html/rfc6585#section-4). Value of <code>Retry-After</code> header (seconds) must be respected.  
+    Additionaly each response under rate limitatation includes following headers:
     * `X-Rate-Limit-Limit` rate limit period definion (example: `1d`, `15m`)
     * `X-Rate-Limit-Remaining` the number of remaining requests in the current period
     * `X-Rate-Limit-Reset` current period end time (example: `8/6/2016 7:54:40 AM`)
@@ -39,7 +39,7 @@ For thoubleshooting purposes our API provides a useful error messages in a defin
       "description": "Missing request body or format of body is malformed"
     }
     
-When appliable, error response will contain list of errors related to particular post body fields. Example
+When applicable, error response will contain list of errors related to particular post body fields. Example
 
     {
       "error_id": "0HKTT1H7HR1CP",
@@ -51,19 +51,19 @@ When appliable, error response will contain list of errors related to particular
           "field": "email",
           "code": "VRM100",
           "message": "Missing or empty",
-          "description": "Non optional parameter is missing or empty"
+          "description": "Required parameter is missing or empty"
         },
         {
           "field": "password",
           "code": "VRM100",
           "message": "Missing or empty",
-          "description": "Non optional parameter is missing or empty"
+          "description": "Required parameter is missing or empty"
         }
       ]
     }
     
-Field `error_id` is unique id of error. This is useful for reporting errors to our 
-support teak so they can better debug and track reported issues.
+Field `error_id` is unique. This is useful for reporting errors to our 
+support team so they can better debug and track reported issues.
 
 ### Feedback and Help
 If you have ideas about how we can improve Draft API or this documentation or want to share with us any comments, email us at draft@kentico.com.

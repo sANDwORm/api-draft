@@ -10,7 +10,7 @@ reading [Roy Fielding's dissertation](https://www.ics.uci.edu/~fielding/pubs/dis
 might give you a head start. We try to keep our API clean and straightforward using common best practices. 
 You can read [a brief overview of basic best practices](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api).
 
-In order to understand better the result of Draft API, you may take a look at the list of response statuses. 
+In order to understand better the result of Draft API, you may take a look at the list of [response statuses](#introduction/getting-started-with-kentico-draft-api/typical-server-responses) and [error responses](#introduction/getting-started-with-kentico-draft-api/error-responses). 
 This helps you asses potential issues in the future:
 
 ### Typical Server Responses
@@ -30,7 +30,7 @@ This helps you asses potential issues in the future:
     * `X-Rate-Limit-Reset` current period end time (example: `8/6/2016 7:54:40 AM`)
 
 ### Error Responses
-For thoubleshooting purposes our API provides a useful error messages in a defined consumable format. Example:
+For troubleshooting failed requests (e.g. when the doesn't satisfy our validation rules) the Kentico Draft API provides error messages in a defined consumable format that help you identify the issue and get the desired response as soon as possible. Example:
 
     {
       "error_id": "0HKTT1H7HR1CO",
@@ -39,7 +39,7 @@ For thoubleshooting purposes our API provides a useful error messages in a defin
       "description": "Missing request body or format of body is malformed"
     }
     
-When applicable, error response will contain list of errors related to particular post body fields. Example
+When creating or editing an object using the API and the object contained in request body doesn't satisfy model validation rules, the error response will contain a list of errors related to the request body fields. Example
 
     {
       "error_id": "0HKTT1H7HR1CP",
@@ -62,8 +62,7 @@ When applicable, error response will contain list of errors related to particula
       ]
     }
     
-Field `error_id` is unique. This is useful for reporting errors to our 
-support team so they can better debug and track reported issues.
+Field `error_id` is unique. When having some issues, send us the `error_id`, and we will quickly debug and track reported issues.
 
 ### Feedback and Help
 If you have ideas about how we can improve Draft API or this documentation or want to share with us any comments, email us at draft@kentico.com.

@@ -123,7 +123,7 @@ After [getting content items](#reference/0/all-content-items/get-content-items),
 When you have the modular content item ID, you can use Kentico Draft API to [get a specific content item](#reference/0/one-content-item/get-content-item).
 
 ## Projects [/projects]
-Project is where all your content is stored. Both content inventory and content models are always part of a project.
+Project is where all your content is stored. Both content items and content models are always part of a project.
 
 ### Get All Projects [GET]
 + Request
@@ -190,7 +190,7 @@ A single content item contains content for one web page or a smaller content blo
     + Attributes (Content Item)
 
 ## Workflow [/projects/{project_id}/workflow]
-Workflow steps help you to distinguish what items are approved for import.
+Workflow steps help you distinguish what items are approved for import.
 + Parameters
 
     + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
@@ -234,7 +234,7 @@ Workflow steps help you to distinguish what items are approved for import.
             
     
 ## Sitemap [/projects/{project_id}/sitemap]
-Sitemap location helps you to get only content items which you're currently importing.
+Sitemap locations help you get only content items for a section of your site.
 + Parameters
 
     + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)

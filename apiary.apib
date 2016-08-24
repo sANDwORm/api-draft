@@ -1,17 +1,16 @@
 FORMAT: 1A
 HOST: https://api-draft.kenticocloud.com/
 
-# Kentico Draft API Reference
+# Kentico Draft API — Developer documentation
 ## Getting started with Kentico Draft API
-Welcome to the Kentico Draft API reference! This documentation lists and describes the individual 
-resources you can use to manipulate objects in Kentico Draft.  
-The Kentico Draft API is based on REST. If you're new to REST, 
+Welcome to the Kentico Draft API documentation for developers! This documentation describes how you can use to Kentico Draft API to migrate content and content models from Kentico Draft to a platform of your choice.
+The Kentico Draft API is based on REST specification. If you're new to REST, 
 reading [Roy Fielding's dissertation](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) 
 might give you a head start. We try to keep our API clean and straightforward using common best practices. 
 You can read [a brief overview of basic best practices](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api).
 
-In order to understand better the result of Draft API, you may take a look at the list of [response statuses](#introduction/getting-started-with-kentico-draft-api/typical-server-responses) and [error responses](#introduction/getting-started-with-kentico-draft-api/error-responses). 
-This helps you asses potential issues in the future:
+Before you begin exploring Kentico Draft API, you may take a look at the list of [response statuses](#introduction/getting-started-with-kentico-draft-api/typical-server-responses) and [error responses](#introduction/getting-started-with-kentico-draft-api/error-responses). 
+This might help you to save precious time when resolving issues in the future:
 
 ### Typical Server Responses
 *   <code>200</code> OK - The request was successful
@@ -30,16 +29,16 @@ This helps you asses potential issues in the future:
     * `X-Rate-Limit-Reset` current period end time (example: `8/6/2016 7:54:40 AM`)
 
 ### Error Responses
-For troubleshooting failed requests (e.g. when the doesn't satisfy our validation rules) the Kentico Draft API provides error messages in a defined consumable format that help you identify the issue and get the desired response as soon as possible. Example:
+For troubleshooting failed requests (for example when an object was not found) the Kentico Draft API provides error messages in a defined consumable format that help you identify the issue and get the desired response as soon as possible. Example:
 
     {
       "error_id": "0HKTT1H7HR1CO",
-      "code": "CR400.1",
-      "message": "Bad Request",
-      "description": "Missing request body or format of body is malformed"
+      "code": "CR404",
+      "message": "Not found",
+      "description": "Requested asset wasn't found"
     }
     
-When creating or editing an object using the API and the object contained in request body doesn't satisfy model validation rules, the error response will contain a list of errors related to the request body fields. Example
+When creating or editing an object using the API and the object contained in the request body doesn't satisfy Kentico Draft model validation rules, the error response will contain a list of errors related to the request body fields. Example
 
     {
       "error_id": "0HKTT1H7HR1CP",
@@ -70,7 +69,7 @@ If you have ideas about how we can improve Draft API or this documentation or wa
 We're always glad to answer all your questions or share with you our future plans. Drop us a line at draft@kentico.com.
 
 ### Head start
-Often individual resources are used together in complex use cases. Following use cases will help you get started:
+Often content migration requires complex understanding of Kentico Draft API. Following use cases might help you get started:
 *   [Getting approved content items](#introduction/getting-approved-content-items)
 *   [Downloading assets](#introduction/downloading-assets)
 *   [Getting modular content items](#introduction/getting-modular-content-items)
@@ -79,15 +78,7 @@ Often individual resources are used together in complex use cases. Following use
 After content in Kentico Draft is approved and ready for import into a CMS, you can use Draft API to get the finished content items. Now, we’ll show you in 6 simple steps how you can get all content items of a content inventory section.
 
 ### 1. Configure authorization
-<pre>DISCLAIMER: the information we require for authorization and the way how you authorize to Draft might change. We're still figuring out the best way. Help us and tell us what do you think is the best way to go.</pre>
-
-To keep your inventory private, we will need to recognize your requests using an API Key. Drop us a line at draft@kentico.com and we’ll send you back your API key. To understand better, how you intend to use our API, please briefly describe the following:
-
-* Where will the API be used? (CMS custom module, Standalone application, One-off script, other)
-* What programming language will be used to call our API?
-* What CMS are you using for displaying the content?
-
-Once you have your API Key, you can authorize your requests by including the Key in the Authorization header:
+For security reasons, we will need to recognize your requests using an API key. You can easily get your API key in your [Kentico Draft user profile](https://draft.kenticocloud.com/#/user-profile). Save this key and include it in the Authorization header of all Kentico Draft API requests. The Authorization header should look like the following:
 
 <pre>Authorization:Bearer {access_token}</pre>
 

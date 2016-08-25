@@ -80,7 +80,7 @@ After content in Kentico Draft is approved and ready for import into a CMS, you 
 ### 1. Configure authorization
 For security reasons, we will need to recognize your requests using an API key. You can easily get your API key in your [Kentico Draft user profile](https://draft.kenticocloud.com/#/user-profile). Save this key and include it in the Authorization header of all Kentico Draft API requests. The Authorization header should look like the following:
 
-<pre>Authorization:Bearer {access_token}</pre>
+<pre>Authorization:Bearer {API key}</pre>
 
 
 ### 2. Get a project
@@ -129,7 +129,7 @@ Project is where all your content is stored. Both content items and content mode
 + Request
     + Headers
     
-            Authorization: Bearer {access_token}
+            Authorization: Bearer {API key}
 
 + Response 200 (application/json)
     + Attributes (Projects)
@@ -144,7 +144,7 @@ Content types define the structure of your content items.
 + Request
     + Headers
     
-            Authorization: Bearer {access_token}
+            Authorization: Bearer {API key}
 
 + Response 200 (application/json)
     + Attributes (Content Types)
@@ -162,7 +162,7 @@ Content items contain content for your website.
 + Request
     + Headers
 
-            Authorization: Bearer {access_token}
+            Authorization: Bearer {API key}
 
 + Response 200 (application/json)
     + Attributes 
@@ -184,7 +184,7 @@ A single content item contains content for one web page or a smaller content blo
 + Request
     + Headers
 
-            Authorization: Bearer {access_token}
+            Authorization: Bearer {API key}
 
 + Response 200 (application/json)
     + Attributes (Content Item)
@@ -199,7 +199,7 @@ Workflow steps help you distinguish what items are approved for import.
 + Request
     + Headers
 
-            Authorization: Bearer {access_token}
+            Authorization: Bearer {API key}
 
 + Response 200 (application/json)
     + Attributes (Workflow Statuses)
@@ -243,7 +243,7 @@ Sitemap locations help you get only content items for a section of your site.
 + Request
     + Headers
 
-            Authorization: Bearer {access_token}
+            Authorization: Bearer {API key}
 
 + Response 200 (application/json)
     + Attributes (Sitemap)
@@ -291,7 +291,7 @@ Taxonomy is the practice and science of classification. In Draft, Taxonomy is a 
 + Request
     + Headers
 
-            Authorization: Bearer {access_token}
+            Authorization: Bearer {API key}
 
 + Response 200 (application/json)
     + Attributes (Taxonomy Groups)
@@ -330,7 +330,7 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 + Request
     + Headers
 
-            Authorization: Bearer {access_token}
+            Authorization: Bearer {API key}
 
 + Response 200 (application/json)
     + Attributes

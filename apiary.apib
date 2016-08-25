@@ -281,8 +281,43 @@ Sitemap locations help you get only content items for a section of your site.
               ]
             }
 
-## Taxonomy [/projects/{project_id}/]
+## Taxonomy [/projects/{project_id}/taxonomy]
+Taxonomy is the practice and science of classification. In Draft, Taxonomy is a way to group content together to justify your business needs. This helps you identify and get similar content, thematic content or content that is relevant to a particular audience.     
++ Parameters
+    + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
+    
+### Get Taxonomy groups [GET]
++ Request
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Response 200 (application/json)
+    + Attributes (Taxonomy Group)
+    
+    + Body
             
+            {
+                "taxonomy_groups": [
+                    {
+                      "taxonomy_id": "9c79371e-5ba0-248f-0c7e-a79be95a7dba",
+                      "name": "Persona",
+                      "nodes": [
+                        {
+                          "taxonomy_node_id": "d9fc45a9-0acd-5583-41b9-73b4e96ea277",
+                          "name": "Purchasing Agent",
+                          "children": []
+                        },
+                        {
+                          "taxonomy_node_id": "9fce7b2a-3cea-676a-edbe-3d5ef6e89d96",
+                          "name": "Cafe Owner",
+                          "children": []
+                        }
+                      ]
+                    }
+                ]
+            }
+       
 ## Assets [/projects/{project_id}/assets/{asset_id}]
 Kentico Draft API allows you to generate a download link for your assets. Download link expires after 60 minutes.
 + Parameters
@@ -459,6 +494,16 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 + `sitemap_node_id`: `0d5adc73-ba63-45e6-8fc4-e2d751cf1ca0` (string, required)
 + name: Home (string, required)
 + children (array[Sitemap Node], required)
+
+## Taxonomy Group (object)
++ `taxonomy_id`: `9c79371e-5ba0-248f-0c7e-a79be95a7dba` (string, required)
++ name: `Persona` (string, required)
++ nodes (array[Taxonomy Node], required)
+
+## Taxonomy Node (object)
++ `taxonomy_node_id`: `9fce7b2a-3cea-676a-edbe-3d5ef6e89d96` (string, required)
++ name: `Cafe owner` (string, required)
++ children (array[Taxonomy Node], required)
 
 ## Error (object)
 + `error_id`: 0HKTT1H7HR1CO (string) - unique id of error, useful for support team to debug and track problems

@@ -358,6 +358,7 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
     - (DateTimeTypeElement)
     - (AssetTypeElement)
     - (ModularContentTypeElement)
+    - (TaxonomyTypeElement)
 
 ## Content Types (object)
 + types (array[Content Type])
@@ -392,6 +393,11 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 + name: Features (string, required)
 + type: `modular_content` (string, required)
 
+## TaxonomyTypeElement (object)
++ `element_id`: `dfe283db-2523-3ca0-b935-3f0a5299e968` (string, required)
++ name: taxonomy (string, required)
++ type: `taxonomy` (string, required)
+
 ############################################
 
 ## Content Item (object)
@@ -410,6 +416,7 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
     - (DateTimeItemElement)
     - (AssetItemElement)
     - (ModularContentItemElement)
+    - (TaxonomyElement)
     
 ## Content Items (array[Content Item])
 
@@ -486,6 +493,12 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 + name: Features (string, required)
 + type: `modular_content` (string, required)
 + value (array[Content Item Reference], required)
+
+## TaxonomyElement (object)
++ `element_id`: `dfe283db-2523-3ca0-b935-3f0a5299e968` (string, required)
++ name: taxonomy (string, required)
++ type: `taxonomy` (string, required)
++ value (array[string], required)
 
 ############################################
 ## Sitemap (object)

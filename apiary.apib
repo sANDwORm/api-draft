@@ -111,9 +111,9 @@ Note, that when you are getting more than 10 items at once, Draft API will slice
 ## Downloading assets
 When exporting content items from Draft, you might need to download assets included in these items. Draft API allows you to generate a temporary download link, which expires after 60 minutes. 
 
-After [getting content items](#reference/0/all-content-items/get-content-items), find asset content elements of all items from which you want to download assets. You can recognize asset content element, by having a type attribute “asset”. The value of asset content elements is an array of asset metadata. Pick IDs of assets, which we’ll use later.
+After [getting content items](#reference/0/all-content-items/get-content-items), find asset content element (e.g. Teaser image) in all items from which you want to download assets. You can recognize asset content element, by having a type attribute “asset”. The value of asset content elements is an array of asset metadata. Pick attribute 'create_download_link', which you can use to generate a temporary 60-minute download link.
 
-When you have the asset ID, you can use Kentico Draft API to [get a temporary asset download link](#reference/0/assets/get-asset-download-link).
+Since every request to the Kentico Draft API has to be authorized, you will need to include the Authorization header when calling the link in the 'create_download_link' attribute of a content item.
 
 ## Getting modular content items
 Content items in Draft may be composed of smaller content blocks called modular content items. You can use Draft API to get modular content items as well. 
@@ -171,7 +171,7 @@ Content items contain content for your website.
             + item_count: 128 (number, required)
             + page_count: 13 (number, required)
             + current_page: 1 (number, required)
-            + next_page: `https://api-draft.kenticocloud.com/projects/54da688e-5489-467d-bd25-28882f4f054d/items?page=2` (string, required)
+            + next_page: `https://api.kenticocloud.com/draft/projects/54da688e-5489-467d-bd25-28882f4f054d/items?page=2` (string, required)
     
 ## One Content Item [/projects/{project_id}/items/{item_id}]
 A single content item contains content for one web page or a smaller content block.
@@ -452,6 +452,7 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 + type: `image/jpg` (string, required) - file mime type
 + size: `135897` (number, required) - size of file in bytes (unsigned integer)
 + last_modified: `2016-03-31T08:04:14.7525987Z` (string, required) - time of asset upload in ISO 8601 format
++ `create_download_link`: `https://api.kenticocloud.com/draft/projects/54da688e-5489-467d-bd25-28882f4f054d/assets/287b779d-9ceb-4c8f-96c4-ea4fdb22b09d` (string) - link to the asset endpoint, which you can use to generate a temporary download link
 
 ## AssetItemElement (object)
 + `element_id`: `a3a31bea-fbbf-4534-8002-a1907955f537` (string, required)
@@ -487,7 +488,7 @@ Kentico Draft API allows you to generate a download link for your assets. Downlo
 + `item_id`: `02845986-6c4f-4eb6-a820-e8f4493feacd` (string, required)
 + `type_id`: `2e9b7cdd-e623-4918-a3f0-eb237878723c` (string, required) 
 + name: Blog post (string, required)
-+ link: `https://api-draft.kenticocloud.com/projects/54da688e-5489-467d-bd25-28882f4f054d/items/02845986-6c4f-4eb6-a820-e8f4493feacd` (string, required)
++ link: `https://api.kenticocloud.com/draft/projects/54da688e-5489-467d-bd25-28882f4f054d/items/02845986-6c4f-4eb6-a820-e8f4493feacd` (string, required)
 
 ## ModularContentItemElement (object)
 + `element_id`: `c7599588-edbd-4ae0-a5dc-91c3240916ef` (string, required)

@@ -78,7 +78,7 @@ Often content migration requires complex understanding of Kentico Draft API. Fol
 After content in Kentico Draft is approved and ready for import into a CMS, you can use Draft API to get the finished content items. Now, we’ll show you in 6 simple steps how you can get all content items of a content inventory section.
 
 ### 1. Configure authorization
-For security reasons, we will need to recognize your requests using an API key. You can easily get your API key in your [Kentico Draft user profile](https://draft.kenticocloud.com/#/user-profile). Save this key and include it in the Authorization header of all Kentico Draft API requests. The Authorization header should look like the following:
+For security reasons, we will need to recognize your requests using an API key. You can easily get your API key in the [Development section](https://draft.kenticocloud.com/#/development) of your Kentico Draft project. Save this key and include it in the Authorization header of all Kentico Draft API requests. The Authorization header should look like the following:
 
 <pre>Authorization:Bearer {API key}</pre>
 
@@ -86,7 +86,9 @@ For security reasons, we will need to recognize your requests using an API key. 
 ### 2. Get a project
 Objects like content items and content models are part of a project. Therefore, you will need to include the project ID as a part of the request URI.
 
-To get a project ID, [get the list of all projects](#reference/0/projects/get-all-projects). Then, pick your project and save the project ID.
+To get a project ID you can:
+* copy a project ID from the [Development section](https://draft.kenticocloud.com/#/development) of your Kentico Draft project
+* [get the list of all projects](#reference/0/projects/get-all-projects). Then, pick your project and save the project ID
 
 ### 3. Get a content type (optional)
 The content inventory contains items of various content types. You can use Draft API to get only items of a specific content type. Now, we’ll show you how you can get a content type. You’ll need the ID of this type later on when getting content items.

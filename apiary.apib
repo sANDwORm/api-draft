@@ -31,15 +31,18 @@ This might help you save precious time when resolving issues in the future:
 ### Error Responses
 For troubleshooting failed requests (for example when an object was not found) the Kentico Draft API provides error messages in a defined consumable format that helps you identify the issue and get the desired response as soon as possible. Example:
 
+<pre>
     {
       "error_id": "0HKTT1H7HR1CO",
       "code": "CR404",
       "message": "Not found",
       "description": "Requested asset wasn't found"
     }
-    
+</pre>
+
 When creating or editing an object using the API and the object contained in the request body doesn’t satisfy the Kentico Draft model validation rules, the error response will contain a list of errors related to the request body fields. Example:
 
+<pre>
     {
       "error_id": "0HKTT1H7HR1CP",
       "code": "CR400",
@@ -60,7 +63,8 @@ When creating or editing an object using the API and the object contained in the
         }
       ]
     }
-    
+</pre>
+
 Field `error_id` is unique. When having issues, send us the `error_id`, and we will quickly debug and track reported issues.
 
 ### Feedback and Help

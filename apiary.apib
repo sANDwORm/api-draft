@@ -3,14 +3,14 @@ HOST: https://api.kenticocloud.com/draft
 
 # Kentico Draft API — Developer documentation
 ## Getting started with Kentico Draft API
-Welcome to the Kentico Draft API documentation for developers! Learn how you can use to Kentico Draft API to migrate content and content models from Kentico Draft to a platform of your choice.
-The Kentico Draft API is based on REST specification. If you're new to REST, 
-reading [Roy Fielding's dissertation](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) 
+Welcome to the Kentico Draft API documentation for developers! Learn how you can use the Kentico Draft API to migrate content and content models from Kentico Draft to a platform of your choice.
+The Kentico Draft API is based on REST specification. If you’re new to REST, 
+reading [Roy Fielding’s dissertation](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) 
 might give you a head start. We try to keep our API clean and straightforward using common best practices. 
 You can read [a brief overview of basic best practices](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api).
 
-Before you begin exploring Kentico Draft API, you may take a look at the list of [response statuses](#introduction/getting-started-with-kentico-draft-api/typical-server-responses) and [error responses](#introduction/getting-started-with-kentico-draft-api/error-responses). 
-This might help you to save precious time when resolving issues in the future:
+Before you begin exploring the Kentico Draft API, you may take a look at the list of [response statuses](#introduction/getting-started-with-kentico-draft-api/typical-server-responses) and [error responses](#introduction/getting-started-with-kentico-draft-api/error-responses). 
+This might help you save precious time when resolving issues in the future:
 
 ### Typical Server Responses
 *   <code>200</code> OK - The request was successful
@@ -29,7 +29,7 @@ This might help you to save precious time when resolving issues in the future:
     * `X-Rate-Limit-Reset` current period end time (example: `8/6/2016 7:54:40 AM`)
 
 ### Error Responses
-For troubleshooting failed requests (for example when an object was not found) the Kentico Draft API provides error messages in a defined consumable format that help you identify the issue and get the desired response as soon as possible. Example:
+For troubleshooting failed requests (for example when an object was not found) the Kentico Draft API provides error messages in a defined consumable format that helps you identify the issue and get the desired response as soon as possible. Example:
 
     {
       "error_id": "0HKTT1H7HR1CO",
@@ -38,7 +38,7 @@ For troubleshooting failed requests (for example when an object was not found) t
       "description": "Requested asset wasn't found"
     }
     
-When creating or editing an object using the API and the object contained in the request body doesn't satisfy Kentico Draft model validation rules, the error response will contain a list of errors related to the request body fields. Example
+When creating or editing an object using the API and the object contained in the request body doesn’t satisfy the Kentico Draft model validation rules, the error response will contain a list of errors related to the request body fields. Example:
 
     {
       "error_id": "0HKTT1H7HR1CP",
@@ -61,15 +61,15 @@ When creating or editing an object using the API and the object contained in the
       ]
     }
     
-Field `error_id` is unique. When having some issues, send us the `error_id`, and we will quickly debug and track reported issues.
+Field `error_id` is unique. When having issues, send us the `error_id`, and we will quickly debug and track reported issues.
 
 ### Feedback and Help
-If you have ideas about how we can improve Draft API or this documentation or want to share with us any comments, email us at draft@kentico.com.
+If you have ideas about how we can improve the Kentico Draft API, this documentation, or you want to share any comments, email us at draft@kentico.com.
 
-We're always glad to answer all your questions or share with you our future plans. Drop us a line at draft@kentico.com.
+We are always glad to answer all your questions or share with you our future plans.
 
 ### Head start
-Often content migration requires complex understanding of Kentico Draft API. Following use cases might help you get started:
+Content migration often requires complex understanding of the Kentico Draft API. The following use cases will help you get started:
 *   [Getting approved content items](#introduction/getting-approved-content-items)
 *   [Downloading assets](#introduction/downloading-assets)
 *   [Getting modular content items](#introduction/getting-modular-content-items)
@@ -78,7 +78,7 @@ Often content migration requires complex understanding of Kentico Draft API. Fol
 After content in Kentico Draft is approved and ready for import into a CMS, you can use Draft API to get the finished content items. Now, we’ll show you in 6 simple steps how you can get all content items of a content inventory section.
 
 ### 1. Configure authorization
-For security reasons, we will need to recognize your requests using an API key. You can easily get your API key in the [Development section](https://draft.kenticocloud.com/#/development) of your Kentico Draft project. Save this key and include it in the Authorization header of all Kentico Draft API requests. The Authorization header should look like the following:
+For security reasons, we will need to recognize your requests using an API key. You can easily get your API key in the [Development section](https://draft.kenticocloud.com/#/development) of your Kentico Draft project. Save the key and include it in the Authorization header of all Kentico Draft API requests. The Authorization header should look like the following:
 
 <pre>Authorization:Bearer {API key}</pre>
 
@@ -91,38 +91,38 @@ To get a project ID you can:
 * [get the list of all projects](#reference/0/projects/get-all-projects). Then, pick your project and save the project ID
 
 ### 3. Get a content type (optional)
-The content inventory contains items of various content types. You can use Draft API to get only items of a specific content type. Now, we’ll show you how you can get a content type. You’ll need the ID of this type later on when getting content items.
+The content inventory contains items of various content types. You can use the Kentico Draft API to get only items of a specific content type. Now, we’ll show you how you can get a content type. You’ll need the ID of this type later when getting content items.
 
 To get a content type, [get a list of all content types](#reference/0/content-types/get-all-content-types). Then, pick a type and save it for later. You can pick multiple types to get all items of any of these types.
 
 ### 4. Get a sitemap location (optional)
-The sitemap in Draft helps you to organize content items into a logical structure which gives you a hint how the new website will look. You can use Draft API to get only items assigned to a specific sitemap location. Now, we’ll show you how you can get your sitemap. You’ll need the ID of a sitemap location later on when getting content items.
+The sitemap in Draft helps you organize content items into a logical structure, which gives you a hint of what the new website will look like. You can use the Kentico Draft API to get only items assigned to a specific sitemap location. Now, we’ll show you how you can get your sitemap. You’ll need the ID of a sitemap location later when getting content items.
 
 To get a sitemap location, [get the whole sitemap](#reference/0/sitemap/get-sitemap). Then, pick a location and save it for later. You can pick multiple locations to get items assigned to any of them.
 
 ### 5. Get a workflow step (optional)
-Content items can be in various steps of your content production workflow. Typically, you might need to get only approved content items. You can use Draft API to get only items in a particular workflow step. Now, we’ll show you how you can get a workflow step. You’ll need the ID of this workflow step later on when getting content items. 
+Content items can be in various steps of your content production workflow. Typically, you might need to get only approved content items. You can use the Kentico Draft API to get only items in a particular workflow step. Now, we’ll show you how you can get a workflow step. You’ll need the ID of this workflow step later when getting content items. 
 
 To get a workflow step, [get a list of all steps](#reference/0/workflow/get-workflow). Then, pick a step and save it for later. You can pick multiple workflow steps to get items assigned to any of them.
 
 ### 6. Get the content items
 Now, we’ll show you how you can get a list of content items from your content inventory. You can refine items by a content type, workflow step or a sitemap location. To achieve this, include a type ID, step ID or location ID in the query string of your request when [getting content items](#reference/0/content-items/get-content-items).
 
-Note, that when you are getting more than 10 items at once, Draft API will slice the whole list of items into pages. Initially, it will return the first page with a link to the next page. You can use this link to get the next bunch of items until you reach the last page. To get the items, access the items part of the [response JSON](#reference/0/all-content-items/get-content-items). To get the next page, use the pagination part of the [response JSON](#reference/0/content-items/get-content-items).
+Note that when you are getting more than 10 items at once, the Kentico Draft API will slice the whole list of items into pages. Initially, it will return the first page with a link to the next page. You can use this link to get the next bunch of items until you reach the last page. To get the items, access the items part of the [response JSON](#reference/0/all-content-items/get-content-items). To get the next page, use the pagination part of the [response JSON](#reference/0/content-items/get-content-items).
 
 ## Downloading assets
-When exporting content items from Draft, you might need to download assets included in these items. Draft API allows you to generate a temporary download link, which expires after 60 minutes. 
+When exporting content items from Draft, you might need to download assets included in these items. The Kentico Draft API allows you to generate a temporary download link, which expires after 60 minutes. 
 
-After [getting content items](#reference/0/all-content-items/get-content-items), find asset content element (e.g. Teaser image) in all items from which you want to download assets. You can recognize asset content element, by having a type attribute “asset”. The value of asset content elements is an array of asset metadata. Pick attribute 'create_download_link', which you can use to generate a temporary 60-minute download link.
+After [getting content items](#reference/0/all-content-items/get-content-items), find an asset content element (e.g., Teaser image) in all items from which you want to download the assets. You can recognize asset content elements by the “asset” type attribute. The value of asset content elements is an array of asset metadata. Pick the 'create_download_link' attribute, which you can use to generate a temporary 60-minute download link.
 
-Since every request to the Kentico Draft API has to be authorized, you will need to include the Authorization header when calling the link in the 'create_download_link' attribute of a content item.
+Because every request to the Kentico Draft API has to be authorized, you need to include the Authorization header when calling the link in the 'create_download_link' attribute of a content item.
 
 ## Getting modular content items
-Content items in Draft may be composed of smaller content blocks called modular content items. You can use Draft API to get modular content items as well. 
+Content items in Kentico Draft may be composed of smaller content blocks called modular content items. You can use the Kentico Draft API to get modular content items as well. 
 
-After [getting content items](#reference/0/all-content-items/get-content-items), find content elements which hold the modular content items. You can recognize modular content elements, by having a type attribute “modular_content”. Pick modular items IDs, which we’ll use later.
+After [getting content items](#reference/0/all-content-items/get-content-items), find content elements that hold the modular content items. You can recognize modular content elements by the “modular_content” type attribute. Pick modular items IDs, which we’ll use later.
 
-When you have the modular content item ID, you can use Kentico Draft API to [get a specific content item](#reference/0/one-content-item/get-content-item).
+When you have the modular content item ID, you can use the API to [get a specific content item](#reference/0/one-content-item/get-content-item).
 
 ## Projects [/projects]
 Project is where all your content is stored. Both content items and content models are always part of a project.
@@ -284,7 +284,7 @@ Sitemap locations help you get only content items for a section of your site.
             }
 
 ## Taxonomy [/projects/{project_id}/taxonomy]
-Taxonomy is the practice and science of classification. In Draft, Taxonomy is a way to group content together to justify your business needs. This helps you identify and get similar content, thematic content or content that is relevant to a particular audience.     
+Taxonomy is the practice and science of classification. In Kentico Draft, taxonomy is a way to group content together to justify your business needs. This helps you identify and get similar content, thematic content, or content that is relevant to a particular audience.     
 + Parameters
 
     + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
@@ -322,7 +322,7 @@ Taxonomy is the practice and science of classification. In Draft, Taxonomy is a 
             }
        
 ## Assets [/projects/{project_id}/assets/{asset_id}]
-Kentico Draft API allows you to generate a download link for your assets. Download link expires after 60 minutes.
+The Kentico Draft API allows you to generate a download link for your assets. The download link expires after 60 minutes.
 + Parameters
 
     + project_id: `54da688e-5489-467d-bd25-28882f4f054d` (string, required)
